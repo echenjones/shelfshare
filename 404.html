@@ -10,23 +10,36 @@
         <link rel="stylesheet" href="style.css"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> <!-- For hamburger and social media icons -->
         <style type="text/css">
+            .banner-image {
+                position: relative;
+                margin: 0px;
+            }
+            .banner-image img {
+                opacity: 0.6;
+            }
+            .image-writing {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+            .image-writing h1 {
+                color: #244B75;
+                text-align: center;
+                text-shadow: #A8C4A0 2px 1px;
+                font-size: calc(6vw + 6vh);
+            }
             .content {
                 padding: 20px 20% 50px 20%;
                 text-align: center;
                 line-height: 2;
             }
-            .content h1 {
-                padding-top: 20px;
-                padding-bottom: 30px;
-                text-align: center;
-                line-height: 1.2;
-            }
             .content p {
-                font-size: 18px;
+                font-size: 30px;
                 color: #4C4C4C;
             }
             .content a {
-                font-size: 24px;
+                font-size: 30px;
                 text-decoration: none;
                 color: #D57A6E;
             }
@@ -53,10 +66,14 @@
     </head>
 
     <body>
-        <img style="margin: 0px" src="maze.jpg" alt="Uh oh!" width=100%>
+        <div class="banner-image">
+            <img src="maze.jpg" alt="Uh oh!" width="100%">
+            <div class="image-writing">
+                <h1>404 Page Not Found</h1>
+            </div>
+        </div>
 
         <div class="content">
-            <h1>404 Page Not Found</h1>
             <p>Whoops! This page is lost between the pages. Let’s get you back on track to your next book!</p>
             <br>
             <a href="https://echenjones.github.io/shelfshare">There's no place like home!</a>
