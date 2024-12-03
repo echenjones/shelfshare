@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="description" content="ShelfShare is a community-based platform that allows local book lovers to easily exchange books with each other through a flexible subscription model, promoting affordable reading and sustainability.">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>ShelfShare | Home</title>
+        <link rel="icon" type="image/x-icon" href="icon.png">
+        <link rel="stylesheet" href="style.css"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> <!-- For hamburger and social media icons -->
+        <style type="text/css">
+            .banner-image {
+                position: relative;
+                margin: 0px;
+            }
+            .banner-image img {
+                opacity: 0.6;
+            }
+            .image-writing {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+            .image-writing h1 {
+                color: #244B75;
+                text-align: center;
+                text-shadow: #A8C4A0 2px 1px;
+                font-size: calc(6vw + 6vh);
+            }
+            .content {
+                display: grid;
+                grid-template-columns: auto auto;
+                grid-template-rows: auto auto auto;
+                column-gap: 20px;
+                row-gap: 10px;
+                justify-items: center;
+                align-items: center;
+                padding: 20px 150px 30px 150px;
+                max-width: 1300px;
+            }
+            .content h2 {
+                text-align: center;
+            }
+            .content-image {
+                border-radius: 10px;
+                margin-top: 60px;
+                margin-bottom: 60px;
+                max-width: 100%;
+            }
+            #bottom.content-image {
+                display: none;
+            }
+            .more-link {
+                text-align: left;
+                text-decoration: none;
+                color: #D57A6E;
+            }
+            .more-link:hover {
+                color: #B75F52;
+            }
+            .more-link:visited {
+                text-decoration: none;
+                color: #D57A6E;
+            }
+            .more-link:visited:hover {
+                color: #B75F52;
+            }
+
+            p {
+                text-align: justify;
+                margin-top: 10px;
+                line-height: 1.8;
+            }
+
+            @media (max-width: 1325px) {
+                .content {
+                    padding: 20px 100px 30px 100px;
+                }
+            }
+            @media (max-width: 1000px) {
+                .image-writing h1 {
+                    text-shadow: #FFFFFF 1px 1px;
+                    font-size: calc(5vw + 5vh);
+                }
+                .content {
+                    grid-template-columns: auto;
+                    grid-template-rows: auto auto auto auto auto auto;
+                }
+                .content-image {
+                    margin-top: 20px;
+                }
+                #left.content-image {
+                    display: none;
+                }
+                #bottom.content-image {
+                    display: block;
+                }
+
+                p {
+                    margin-top: 5px;
+                }
+            }
+            @media (max-width: 600px) {
+                .image-writing h1 {
+                    text-shadow: #FFFFFF 0.75px 0.75px;
+                    font-size: calc(4vw + 4vh);
+                }
+                .content {
+                    padding: 20px 50px 30px 50px;
+                }
+            }
+        </style>
+
+        <!-- Header -->
+        <script src="header.js"></script>
+    </head>
+
+    <body>
+        <div class="banner-image">
+            <img src="books1.jpg" alt="Books" width="100%">
+            <div class="image-writing">
+                <h1>ShelfShare</h1>
+            </div>
+        </div>
+
+        <!-- Main content of homepage -->
+        <div class="content">
+            
+            <div>
+                <h2>About Us</h2>
+                <p>
+                    ShelfShare is a community-driven platform that connects local book lovers, allowing them to easily exchange books with one 
+                    another. By bringing together individuals who live near each other, ShelfShare fosters a shared love of reading while promoting 
+                    sustainability through book reuse. Subscribers can browse a virtual bookshelf of available titles, arrange swaps with nearby 
+                    members, and enjoy a constantly changing selection of books without the need to purchase new ones. It's an affordable and 
+                    eco-friendly way to explore new stories and connect with fellow readers in your area.
+                    &nbsp;
+                    <a class="more-link"href='https://emcgov.github.io/cs20-midterm/about.html'>Read more</a>
+                </p>
+            </div>
+                
+            <img class="content-image" src="library.jpg" alt="Book Drop Off" width="90%">
+            
+            <img class="content-image" id="left" src="books2.jpg" alt="Books" width="90%">
+
+            <div>
+                <h2>Popular Right Now</h2>
+                <p>
+                    <strong>"The Seven Husbands of Evelyn Hugo" by Taylor Jenkins Reid</strong>
+                    <br>
+                    A riveting tale of Hollywood glamour, scandal, and forbidden love, as aging actress Evelyn Hugo recounts her extraordinary 
+                    life and seven marriages to a young journalist.
+                    <br>
+                    <strong>"Lessons in Chemistry" by Bonnie Garmus</strong>
+                    <br>
+                    Set in the 1960s, this novel follows the life of Elizabeth Zott, a brilliant but underappreciated chemist who becomes an 
+                    unlikely TV cooking show star while challenging societal expectations for women.
+                    <br>
+                    <strong>"Happy Place" by Emily Henry</strong>
+                    <br>
+                    A heartfelt romantic comedy about two exes who pretend to still be a couple during a week-long vacation with friends, only 
+                    to rediscover old feelings and confront what went wrong in their relationship.
+                </p>
+            </div>
+
+            <img class="content-image" id="bottom" src="books2.jpg" alt="Books" width="90%">
+
+            <div>
+                <h2>Start Sharing</h2>
+                <p>
+                    Joining ShelfShare is easy and quick! Simply visit our website and create an account. Once you're registered, enter your location 
+                    to connect with nearby book lovers. ShelfShare offers flexible subscription tiers to fit your reading habits: the basic plan lets 
+                    you swap one book at a time, while premium and family plans provide access to more swaps and additional features like priority 
+                    access to high-demand books. After selecting your plan, you can browse local listings, offer your own books, and start exchanging 
+                    stories with fellow readers near you!
+                    &nbsp;
+                    <a class="more-link"href='https://emcgov.github.io/cs20-midterm/tours.html'>Read more</a>
+                </p>
+            </div>
+                
+            <img class="content-image" src="books3.jpg" alt="Books" width="90%">
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <script src="footer.js"></script>
+    </body>
+<html>
