@@ -1,1 +1,1 @@
-Deployed at https://echenjones.github.io/shelfshare/home.html
+Deployed at https://echenjones.github.io/shelfshare
