@@ -7,6 +7,12 @@ document.addEventListener("DOMContentLoaded", function() {
                 <div style="min-width: 10px;"></div>
                 <div class="navbar">
                     <ul>
+                        <li>
+                            <form action=""> <!-- Need to add action for search! -->
+                                <input type="text" placeholder="Search books" name="search">
+                                <button type="submit"><i class="fa fa-search"></i></button>
+                            </form>
+                        </li>
                         <li><a href="#">Subscriptions</a></li>
                         <li><strong><a href="#">Log In</a></strong></li>
                     </ul>
@@ -47,6 +53,11 @@ document.addEventListener("DOMContentLoaded", function() {
                 <a href="#">Subscriptions</a>
                 <br>
                 <a href="#">Log In</a>
+                <br>
+                <form action=""> <!-- Need to add action for search! -->
+                    <input type="text" placeholder="Search books" name="search">
+                    <button type="submit"><i class="fa fa-search"></i></button>
+                </form>
             </div>
         </div>
 
