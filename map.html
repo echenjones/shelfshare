@@ -183,7 +183,7 @@
                 })
                 booksHere += "</ul>";
                 const marker = L.marker([location.lat, location.lng], { icon: bookIcon })
-                    .bindPopup(location.name + "<br>" + booksHere)
+                    .bindPopup("<h3>" + location.name + "</h3>" + booksHere)
                     .addTo(map);
                 markers.push(marker);
             });
