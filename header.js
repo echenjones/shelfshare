@@ -72,10 +72,10 @@ document.addEventListener("DOMContentLoaded", function() {
     var page = window.location.pathname;
     var search = document.getElementById("search");
     if (page === "/shelfshare/find.html" || page === "/shelfshare/swap.html") { // May change page names
-        search.style.display = "none";
+        search.style.visibility = "hidden";
     }
     else {
-        search.style.display = "block";
+        search.style.visibility = "visible";
     }
 });
 
