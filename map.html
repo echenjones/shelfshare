@@ -177,7 +177,7 @@
                 })
                 booksHere += "</ul>";
                 const marker = L.marker([location.lat, location.lng], { icon: bookIcon })
-                    .bindPopup("<h3>" + location.name + "</h3><br> " + booksHere)
+                    .bindPopup("<h3>" + location.name + "</h3>" + booksHere)
                     .addTo(map);
                 markers.push(marker);
             });
@@ -278,7 +278,6 @@
                 //var nearbyLocations = [];
                 
                 document.getElementById("nearbyLoc").innerHTML = '<h2>Nearby Swap/Drop Locations:</h2>';
-                document.getElementById("nearbyLoc").innerHTML += '<ul>';
                 //set markers outside area opaque
                 markers.forEach(function(marker) {
                     var distanceMeters = map.distance(locSelected, marker.getLatLng());
@@ -292,7 +291,6 @@
                         marker.setOpacity(0.3);
                     }
                 });
-                document.getElementById("nearbyLoc").innerHTML += '</ul>';
 
                 // var listElement = document.getElementById("nearbyLoc");
                 // listElement.innerHTML = '';
