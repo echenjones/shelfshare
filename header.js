@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 <div class="navbar">
                     <ul>
                         <li>
-                            <form action="" id="search"> <!-- Need to add action for search! -->
+                            <form action="https://echenjones.github.io/shelfshare/find.html" id="search"> <!-- May change page name -->
                                 <input type="text" placeholder="Search books" name="search">
                                 <button type="submit"><i class="fa fa-search"></i></button>
                             </form>
