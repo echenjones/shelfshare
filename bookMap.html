@@ -12,11 +12,11 @@
         <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
 
         <style type="text/css">
-            .content, .content2 {
+            .content {
+                border: 2px solid #4C4C4C;
+                border-radius: 5px;
                 padding: 20px 20% 10px 20%;
-                text-align: justify;
-                font-size: 16px;
-                line-height: 2;
+                background-color: rgba(255, 255, 255, 0.3);
             }
             .content h1 {
                 padding-top: 20px;
@@ -24,13 +24,21 @@
                 text-align: center;
                 line-height: 1.2;
             }
+            .content2 {
+                padding: 20px 0;
+                text-align: justify;
+                font-size: 16px;
+                line-height: 2;
+            }
             .content2 input {
+                border: 1px solid #4C4C4C;
                 border-radius: 5px;
                 padding: 1px 4px;
                 color: #4C4C4C;
                 font-size: 14px;
             }
             .content2 button {
+                border: 1px solid #4C4C4C;
                 border-radius: 5px;
                 color: #4C4C4C;
                 font-size: 14px;
@@ -39,7 +47,8 @@
             #map {
                 z-index: 0;
                 height: 500px;
-                padding-bottom: 20px;
+                width: 90%;
+                margin-bottom: 20px;
             }
             #nearbyLoc {
                 margin-top: 20px;
@@ -57,28 +66,31 @@
     </head>
 
     <body>
-        <div class="content">
-            <h1>Swap and Drop Book Locations</h1>
-            <p>Enter or click on a location to see nearby Swap and Drop book locations and their books!</p>
-            <p>Click <strong>Find Nearby Location</strong> to find nearby locations.</p>
-            <p>Nearby locations will be displayed within the radius you selected.</p>
-        </div>
-
-        <div class="content2">
-            <label for="radius">Radius (miles):</label>
-            <input type="number" id="radius" value="1" min="0" max="200">
-            <br>
-            <label for="address">Enter an Address:</label>
-            <input type="text" id="address" value="Tufts University, 419 Boston Ave, Medford, MA 02155">
-            <button onclick="getLocation()">Find Location</button>
-            <br>
-            <!-- <button onclick="findNearbyLocations()">Find Nearby Locations</button>-->
-        </div>
+        <h1>Swap and Drop Book Locations</h1>
 
         <div class="content">
-            <div id="map"></div> <!-- Where Map Goes -->
-            <h3>Nearby Swap/Drop Locations:</h3>
-            <ul id="nearbyLoc"></ul>
+            <div class="content2">
+                <p>Enter or click on a location to see nearby Swap and Drop book locations and their books!</p>
+                <p>Click <strong>Find Nearby Location</strong> to find nearby locations.</p>
+                <p>Nearby locations will be displayed within the radius you selected.</p>
+            </div>
+
+            <div class="content2">
+                <label for="radius">Radius (miles):</label>
+                <input type="number" id="radius" value="1" min="0" max="200">
+                <br>
+                <label for="address">Enter an Address:</label>
+                <input type="text" id="address" value="Tufts University, 419 Boston Ave, Medford, MA 02155">
+                <button onclick="getLocation()">Find Location</button>
+                <br>
+                <!-- <button onclick="findNearbyLocations()">Find Nearby Locations</button>-->
+            </div>
+
+            <div class="content2">
+                <div id="map"></div> <!-- Where Map Goes -->
+                <h3>Nearby Swap/Drop Locations:</h3>
+                <ul id="nearbyLoc"></ul>
+            </div>
         </div>
 
         <!-- leaflet: interactive map lib  -->
