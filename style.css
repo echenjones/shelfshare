@@ -20,7 +20,14 @@
 .secondary-navigation ul {
     font-size: 18px;
 }
-.secondary-navigation ul input, .secondary-navigation ul button {
+.secondary-navigation ul input {
+    border: none;
+    border-radius: 5px;
+    padding: 1px 4px;
+    font-size: 16px;
+    color: #4C4C4C;
+}
+.secondary-navigation ul button {
     border: none;
     border-radius: 5px;
     font-size: 16px;
@@ -280,7 +287,14 @@ select {
         color: #FFFFFF;
         text-decoration: none;
     }
-    .menu.responsive input, .menu.responsive button {
+    .menu.responsive input {
+        border: none;
+        border-radius: 5px;
+        padding: 1px 4px;
+        font-size: 16px;
+        color: #4C4C4C;
+    }
+    .menu.responsive button {
         border: none;
         border-radius: 5px;
         font-size: 16px;
