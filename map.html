@@ -56,6 +56,12 @@
                 text-align: center;
                 line-height: 1.2;
             }
+            h2 {
+                padding-bottom: 0px;
+            }
+            h3 {
+                padding-top: 10px;
+            }
 
             @media (max-width: 600px) {
                 .content {
@@ -177,7 +183,7 @@
                 })
                 booksHere += "</ul>";
                 const marker = L.marker([location.lat, location.lng], { icon: bookIcon })
-                    .bindPopup("<h3>" + location.name + "</h3>" + booksHere)
+                    .bindPopup(location.name + "<br>" + booksHere)
                     .addTo(map);
                 markers.push(marker);
             });
@@ -286,7 +292,7 @@
                     //if location in radius
                     if (distanceMeters <= radius) {
                         marker.setOpacity(1);
-                        document.getElementById("nearbyLoc").innerHTML += marker.getPopup().getContent() + 'Distance to Location: ' + distanceMiles.toFixed(2) + ' Miles';
+                        document.getElementById("nearbyLoc").innerHTML += marker.getPopup().getContent() + '<strong>Distance to Location: </strong>' + distanceMiles.toFixed(2) + ' Miles';
                     } else {
                         marker.setOpacity(0.3);
                     }
