@@ -15,7 +15,8 @@
             .content {
                 border: 2px solid #4C4C4C;
                 border-radius: 5px;
-                padding: 20px 20% 10px 20%;
+                margin: 20px 20% 10px 20%;
+                padding: 30px;
                 background-color: rgba(255, 255, 255, 0.3);
             }
             .content h1 {
@@ -25,7 +26,7 @@
                 line-height: 1.2;
             }
             .content2 {
-                padding: 20px 0;
+                padding-bottom: 20px;
                 text-align: justify;
                 font-size: 16px;
                 line-height: 2;
@@ -88,7 +89,6 @@
 
             <div class="content2">
                 <div id="map"></div> <!-- Where Map Goes -->
-                <h3>Nearby Swap/Drop Locations:</h3>
                 <ul id="nearbyLoc"></ul>
             </div>
         </div>
@@ -275,7 +275,8 @@
                 var radius = document.getElementById("radius").value * 1609.34; 
                 //var nearbyLocations = [];
                 
-                document.getElementById("nearbyLoc").innerHTML = '<ul>';
+                document.getElementById("nearbyLoc").innerHTML = '<h3>Nearby Swap/Drop Locations:</h3>';
+                document.getElementById("nearbyLoc").innerHTML += '<ul>';
                 //set markers outside area opaque
                 markers.forEach(function(marker) {
                     var distanceMeters = map.distance(locSelected, marker.getLatLng());
