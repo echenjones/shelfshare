@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 <div class="navbar">
                     <ul>
                         <li><a href="https://echenjones.github.io/shelfshare/about.html">About</a></li>
-                        <li><a href="#">Book Map</a></li>
+                        <li><a href="https://echenjones.github.io/shelfshare/bookMap.html">Book Map</a></li>
                         <li><a href="#">FAQ</a></li>
                         <li><a href="#">Contact</a></li>
                     </ul>
