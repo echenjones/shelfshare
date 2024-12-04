@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", function() {
             <div class="menu" id="menu">
                 <a href="https://echenjones.github.io/shelfshare/about.html">About</a>
                 <br>
-                <a href="#">Book Map</a>
+                <a href="https://echenjones.github.io/shelfshare/map.html">Book Map</a>
                 <br>
                 <a href="#">FAQ</a>
                 <br>
