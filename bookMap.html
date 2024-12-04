@@ -23,7 +23,20 @@
                 text-align: center;
                 line-height: 1.2;
             }
+            .content2 input {
+                border: none;
+                border-radius: 5px;
+                padding: 1px 4px;
+                color: #4C4C4C;
+            }
+            .content2 button {
+                border: none;
+                border-radius: 5px;
+                color: #4C4C4C;
+            }
+
             #map {
+                z-index: 0;
                 height: 500px;
                 width: 90%;
             }
@@ -31,11 +44,11 @@
                 margin-top: 20px;
             }
 
-            /* @media (max-width: 600px) {
-                .content {
+            @media (max-width: 600px) {
+                .content, .content2 {
                     padding: 20px 50px 20px 50px;
                 }
-            } */
+            }
         </style>
 
         <!-- Header -->
@@ -48,7 +61,6 @@
             <p>Enter or click on a location to see nearby Swap and Drop book locations and their books!</p>
             <p>Click <strong>Find Nearby Location</strong> to find nearby locations.</p>
             <p>Nearby locations will be displayed within the radius you selected.</p>
-            <br>
         </div>
 
         <div class="content2">
