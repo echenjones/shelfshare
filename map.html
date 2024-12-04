@@ -286,7 +286,7 @@
                     //if location in radius
                     if (distanceMeters <= radius) {
                         marker.setOpacity(1);
-                        document.getElementById("nearbyLoc").innerHTML += '<li>' + marker.getPopup().getContent() + 'Distance to Location: ' + distanceMiles.toFixed(2) + ' Miles' + '</li>';
+                        document.getElementById("nearbyLoc").innerHTML += marker.getPopup().getContent() + 'Distance to Location: ' + distanceMiles.toFixed(2) + ' Miles';
                     } else {
                         marker.setOpacity(0.3);
                     }
