@@ -12,7 +12,7 @@
         <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
 
         <style type="text/css">
-            .content {
+            .content, .content2 {
                 padding: 20px 20% 10px 20%;
                 text-align: justify;
                 line-height: 2;
@@ -22,12 +22,6 @@
                 padding-bottom: 20px;
                 text-align: center;
                 line-height: 1.2;
-            }
-            .content2 {
-                padding-left: 20%;
-                padding-right: 10%;
-                text-align: justify;
-                line-height: 2;
             }
             #map {
                 height: 500px;
@@ -50,12 +44,13 @@
 
     <body>
         <div class="content">
-            <h1>Swap or Drop Book Locations</h1>
-            <p>Enter or click on a location to see nearby Swap or Drop book locations and their books!</p>
+            <h1>Swap and Drop Book Locations</h1>
+            <p>Enter or click on a location to see nearby Swap and Drop book locations and their books!</p>
             <p>Click <strong>Find Nearby Location</strong> to find nearby locations.</p>
             <p>Nearby locations will be displayed within the radius you selected.</p>
             <br>
         </div>
+
         <div class="content2">
             <label for="radius">Radius (miles):</label>
             <input type="number" id="radius" value="1" min="0" max="200">
@@ -67,15 +62,15 @@
             <!-- <button onclick="findNearbyLocations()">Find Nearby Locations</button>-->
         </div>
 
-        <div id="map"></div> <!-- Where Map Goes -->
-
-        <h3>Nearby Swap/Drop Locations:</h3>
-        <ul id="nearbyLoc"></ul>
+        <div class="content">
+            <div id="map"></div> <!-- Where Map Goes -->
+            <h3>Nearby Swap/Drop Locations:</h3>
+            <ul id="nearbyLoc"></ul>
+        </div>
 
         <!-- leaflet: interactive map lib  -->
         <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
         <script>
-                
         //leaflet creating map
             //leaflet map centered at tufts
             var map = L.map('map').setView([42.4, -71.15], 14);
@@ -89,13 +84,13 @@
             var swapLocations = [
                 { 
                     name: "Location 1",
-                    books: ["Calvin and Hobbes", "HarryPotter"],
+                    books: ["Calvin and Hobbes", "Harry Potter"],
                     lat: 42.39639, 
                     lng: -71.12072 
                 }, 
                 { 
                     name: "Location 2", 
-                    books: ["Lotr", "Book12", "Hop on Pop", "Cheese"],
+                    books: ["Lord of the Rings", "Book12", "Hop on Pop", "Cheese"],
                     lat: 42.39575, 
                     lng:  -71.12382 
                 },
@@ -113,7 +108,7 @@
                 },
                 { 
                     name: "location 5", 
-                    books: ["Green Eggs and Ham", "HarryPotter"],
+                    books: ["Green Eggs and Ham", "Harry Potter"],
                     lat: 42.3547, 
                     lng: -71.0643
                 },
@@ -138,7 +133,7 @@
             //marker for user
             var markerSelected = null;
 
-        //created swap/drop locations on map
+            //create swap/drop locations on map
             var bookIcon = L.icon({
                 iconUrl: 'bookMarker.png', // URL of a red dot icon
                 iconSize: [55, 55],  // Size of the icon
@@ -146,7 +141,7 @@
                 popupAnchor: [1, -42] // Point from which the popup will open relative to the icon anchor
             });
 
-             // add bookswap locations to map
+            // add bookswap locations to map
             const markers = [];
             swapLocations.forEach(function(location) {
                 booksHere = "<ul>";
@@ -159,9 +154,6 @@
                     .addTo(map);
                 markers.push(marker);
             });
-
-
-
 
             //click new location of user
             map.on('click', function(e) 
@@ -223,7 +215,6 @@
                     console.log(error)
                     alert("There was an error in getting the map.");
                 } );
-
             }
 
             //marker for person design
@@ -275,8 +266,6 @@
                 });
                 document.getElementById("nearbyLoc").innerHTML += '</ul>';
 
-
-
                 // var listElement = document.getElementById("nearbyLoc");
                 // listElement.innerHTML = '';
 
@@ -292,7 +281,6 @@
                 //     listElement.appendChild(li);
                 // }
             }
-
         </script>
 
         <!-- Footer -->
