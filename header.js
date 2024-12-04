@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 <div class="navbar">
                     <ul>
                         <li>
-                            <form action=""> <!-- Need to add action for search! -->
+                            <form action="" id="search"> <!-- Need to add action for search! -->
                                 <input type="text" placeholder="Search books" name="search">
                                 <button type="submit"><i class="fa fa-search"></i></button>
                             </form>
@@ -67,6 +67,19 @@ document.addEventListener("DOMContentLoaded", function() {
     document.body.insertBefore(header, document.body.firstChild);
 });
 
+// Show or hide search bar, depending on page
+document.addEventListener("DOMContentLoaded", function() {
+    var page = window.location.pathname;
+    var search = document.getElementById("search");
+    if (page === "/find.html" || page === "/swap.html") { // May change page names
+        search.style.display = "none";
+    }
+    else {
+        search.style.display = "block";
+    }
+});
+
+// Expand or collapse hamburger menu
 function toggle() {
     var menu = document.getElementById("menu");
     var top = document.getElementById("top");
