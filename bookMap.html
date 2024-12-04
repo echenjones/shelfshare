@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="description" content="ShelfShare is a community-based platform that allows local book lovers to easily exchange books with each other through a flexible subscription model, promoting affordable reading and sustainability.">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>ShelfShare | Book Map</title>
+        <link rel="icon" type="image/x-icon" href="icon.png">
+        <link rel="stylesheet" href="style.css"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> <!-- For hamburger and social media icons -->
+        <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+
+        <style type="text/css">
+            .content {
+                padding: 20px 20% 10px 20%;
+                text-align: justify;
+                line-height: 2;
+            }
+            .content h1 {
+                padding-top: 20px;
+                padding-bottom: 20px;
+                text-align: center;
+                line-height: 1.2;
+            }
+            .content2 {
+                padding-left: 20%;
+                padding-right: 10%;
+                text-align: justify;
+                line-height: 2;
+            }
+            #map {
+                height: 500px;
+                width: 90%;
+            }
+            #nearbyLoc {
+                margin-top: 20px;
+            }
+
+            /* @media (max-width: 600px) {
+                .content {
+                    padding: 20px 50px 20px 50px;
+                }
+            } */
+        </style>
+
+        <!-- Header -->
+        <script src="header.js"></script>
+    </head>
+
+    <body>
+        <div class="content">
+            <h1>Swap or Drop Book Locations</h1>
+            <p>Enter or click on a location to see nearby Swap or Drop book locations and their books!</p>
+            <p>Click <strong>Find Nearby Location</strong> to find nearby locations.</p>
+            <p>Nearby locations will be displayed within the radius you selected.</p>
+            <br>
+        </div>
+        <div class="content2">
+            <label for="radius">Radius (miles):</label>
+            <input type="number" id="radius" value="1" min="0" max="200">
+            <br>
+            <label for="address">Enter an Address:</label>
+            <input type="text" id="address" value="Tufts University, 419 Boston Ave, Medford, MA 02155">
+            <button onclick="getLocation()">Find Location</button>
+            <br>
+            <!-- <button onclick="findNearbyLocations()">Find Nearby Locations</button>-->
+        </div>
+
+        <div id="map"></div> <!-- Where Map Goes -->
+
+        <h3>Nearby Swap/Drop Locations:</h3>
+        <ul id="nearbyLoc"></ul>
+
+        <!-- leaflet: interactive map lib  -->
+        <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+        <script>
+                
+        //leaflet creating map
+            //leaflet map centered at tufts
+            var map = L.map('map').setView([42.4, -71.15], 14);
+
+            // put map look onto map
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
+
+            //book swap locations for now: should gotten from database later along with books in location
+            var swapLocations = [
+                { 
+                    name: "Location 1",
+                    books: ["Calvin and Hobbes", "HarryPotter"],
+                    lat: 42.39639, 
+                    lng: -71.12072 
+                }, 
+                { 
+                    name: "Location 2", 
+                    books: ["Lotr", "Book12", "Hop on Pop", "Cheese"],
+                    lat: 42.39575, 
+                    lng:  -71.12382 
+                },
+                {
+                    name: "Location 3", 
+                    books: ["book", "book3", "book23"],
+                    lat: 42.3, 
+                    lng: -71.1 
+                },
+                { 
+                    name: "location 4",
+                    books: ["Book1"], 
+                    lat: 42.408, 
+                    lng: -71.1154
+                },
+                { 
+                    name: "location 5", 
+                    books: ["Green Eggs and Ham", "HarryPotter"],
+                    lat: 42.3547, 
+                    lng: -71.0643
+                },
+                { 
+                    name: "location 6", 
+                    books: ["Dune", "Lord of the Flies"],
+                    lat: 40.7417, 
+                    lng: -74.012
+                },
+                { 
+                    name: "location 7", 
+                    books: ["happy", "book200"],
+                    lat: 38.8685, 
+                    lng: -77.0471
+                }
+            ];
+
+            //where user is/inputed
+            var locSelected = null;
+            //radius around user
+            var circle = null;
+            //marker for user
+            var markerSelected = null;
+
+        //created swap/drop locations on map
+            var bookIcon = L.icon({
+                iconUrl: 'bookMarker.png', // URL of a red dot icon
+                iconSize: [55, 55],  // Size of the icon
+                iconAnchor: [25, 42], // Point of the icon which will correspond to the marker's location
+                popupAnchor: [1, -42] // Point from which the popup will open relative to the icon anchor
+            });
+
+             // add bookswap locations to map
+            const markers = [];
+            swapLocations.forEach(function(location) {
+                booksHere = "<ul>";
+                location.books.forEach(function(book) {
+                        booksHere += "<li>" + book + "</li>";
+                })
+                booksHere += "</ul>";
+                const marker = L.marker([location.lat, location.lng], { icon: bookIcon })
+                    .bindPopup(location.name + "<br> " + booksHere)
+                    .addTo(map);
+                markers.push(marker);
+            });
+
+
+
+
+            //click new location of user
+            map.on('click', function(e) 
+            {
+                if (document.getElementById("radius").value <= 0) {
+                    alert("Please enter a valid radius.");
+                    return;
+                }
+                //get rid of previous location
+                if (circle) {
+                    map.removeLayer(circle);
+                }
+                if (markerSelected) {
+                    map.removeLayer(markerSelected);
+                }
+
+                locSelected = e.latlng;
+
+                newLocation(locSelected);
+                findNearbyLocations();
+            } );
+
+            function getLocation() {
+                var address = document.getElementById("address").value;
+                if (!address) {
+                    alert("Please enter a real address.");
+                    return;
+                } else if (document.getElementById("radius").value <= 0) {
+                    alert("Please enter a valid radius.");
+                    return;
+                }
+
+                //map api at location added
+                red = fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(address)}`)
+                .then(res => res.text())
+                .then(data => 
+                {
+                    data = JSON.parse(data)
+                    if (data.length > 0) {
+
+                        if (circle) {
+                            map.removeLayer(circle);
+                        }
+                        if (markerSelected) {
+                            map.removeLayer(markerSelected);
+                        }
+
+                        locSelected = L.latLng(data[0].lat, data[0].lon);
+                        map.setView(locSelected, 14);
+
+                        newLocation(locSelected);
+                        findNearbyLocations();
+
+                    } else {
+                        alert("Cannot find Address.");
+                    }
+                } )
+                .catch(error => {
+                    console.log(error)
+                    alert("There was an error in getting the map.");
+                } );
+
+            }
+
+            //marker for person design
+            var personIcon = L.icon({
+                iconUrl: 'peopleMarker.png', // URL of a red dot icon
+                iconSize: [50, 50],  // Size of the icon
+                iconAnchor: [25, 42], // Point of the icon which will correspond to the marker's location
+                popupAnchor: [1, -42] // Point from which the popup will open relative to the icon anchor
+            });
+
+            function newLocation(locSelected) {
+                //add new user location
+                markerSelected = L.marker(locSelected, { icon: personIcon })
+                    .addTo(map)
+                    .bindPopup("Your Location")
+                    .openPopup();
+                
+                //create radius
+                circle = L.circle(locSelected, {
+                    color: '#3A7CA5',
+                    fillColor: '#A8C4A0',
+                    fillOpacity: 0.4,
+                    radius: document.getElementById("radius").value * 1609.34 //to make into miles
+                } ).addTo(map);
+            }
+
+            function findNearbyLocations() {
+                // if (!locSelected) {
+                //     alert("You need to select a location.");
+                //     return;
+                // }
+                
+                var radius = document.getElementById("radius").value * 1609.34; 
+                //var nearbyLocations = [];
+                
+                document.getElementById("nearbyLoc").innerHTML = '<ul>';
+                //set markers outside area opaque
+                markers.forEach(function(marker) {
+                    var distanceMeters = map.distance(locSelected, marker.getLatLng());
+                    var distanceMiles = distanceMeters / 1609.34;  // Convert meters to miles
+                    
+                    //if location in radius
+                    if (distanceMeters <= radius) {
+                        marker.setOpacity(1);
+                        document.getElementById("nearbyLoc").innerHTML += '<li>' + marker.getPopup().getContent() + 'Distance to Location: ' + distanceMiles.toFixed(2) + ' Miles' + '</li>';
+                    } else {
+                        marker.setOpacity(0.3);
+                    }
+                });
+                document.getElementById("nearbyLoc").innerHTML += '</ul>';
+
+
+
+                // var listElement = document.getElementById("nearbyLoc");
+                // listElement.innerHTML = '';
+
+                // if (nearbyLocations.length > 0) {
+                //     nearbyLocations.forEach(function(location) {
+                //         var li = document.createElement("li");
+                //         li.textContent = location;
+                //         listElement.appendChild(li);
+                //     });
+                // } else {
+                //     var li = document.createElement("li");
+                //     li.textContent = "No nearby locations found.";
+                //     listElement.appendChild(li);
+                // }
+            }
+
+        </script>
+
+        <!-- Footer -->
+        <script src="footer.js"></script>
+    </body>
+</html>
