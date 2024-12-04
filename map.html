@@ -46,6 +46,7 @@
                 margin-bottom: 20px;
             }
             #nearbyLoc {
+                width: 90%;
                 margin-top: 20px;
             }
 
@@ -176,7 +177,7 @@
                 })
                 booksHere += "</ul>";
                 const marker = L.marker([location.lat, location.lng], { icon: bookIcon })
-                    .bindPopup(location.name + "<br> " + booksHere)
+                    .bindPopup("<h3>" + location.name + "</h3><br> " + booksHere)
                     .addTo(map);
                 markers.push(marker);
             });
@@ -276,7 +277,7 @@
                 var radius = document.getElementById("radius").value * 1609.34; 
                 //var nearbyLocations = [];
                 
-                document.getElementById("nearbyLoc").innerHTML = '<h3>Nearby Swap/Drop Locations:</h3>';
+                document.getElementById("nearbyLoc").innerHTML = '<h2>Nearby Swap/Drop Locations:</h2>';
                 document.getElementById("nearbyLoc").innerHTML += '<ul>';
                 //set markers outside area opaque
                 markers.forEach(function(marker) {
