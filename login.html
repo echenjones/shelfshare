@@ -5,19 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
         .form-container {
             max-width: 400px;
-            margin: 0 auto;
+            margin: 50px auto;
             padding: 20px;
             background-color: #ffffff;
             border-radius: 8px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
             text-align: center;
         }
+
         .form-container h1 {
             margin-bottom: 20px;
+            color: #3A7CA5;
         }
+
         .form-container input {
             width: 100%;
             padding: 10px;
@@ -26,6 +30,7 @@
             border-radius: 5px;
             font-size: 16px;
         }
+
         .form-container button {
             width: 100%;
             padding: 10px;
@@ -37,9 +42,11 @@
             cursor: pointer;
             transition: background-color 0.3s;
         }
+
         .form-container button:hover {
             background-color: #2A5A7F;
         }
+
         .form-container .toggle-btn {
             margin-top: 10px;
             display: inline-block;
@@ -50,26 +57,28 @@
             border-radius: 5px;
             transition: background-color 0.3s;
         }
+
         .form-container .toggle-btn:hover {
             background-color: #6F8972;
         }
+
+        #message {
+            margin-top: 10px;
+            font-size: 14px;
+        }
     </style>
+    <script src="header.js"></script>
 </head>
 <body>
-    <div class="top">
-        <!-- Include header with navigation -->
-        <script src="header.js"></script>
-    </div>
-
     <div class="blank-space"></div>
 
     <div class="form-container">
         <h1>Login</h1>
+        <div id="message"></div>
         <form id="loginForm">
-            <input type="email" id="email" name="email" required placeholder="Enter your email">
-            <input type="password" id="password" name="password" required placeholder="Enter your password">
+            <input type="email" id="email" required placeholder="Enter your email">
+            <input type="password" id="password" required placeholder="Enter your password">
             <button type="submit">Login</button>
-            <p id="loginMessage" style="color: red; margin-top: 10px;"></p>
         </form>
         <a href="register.html" class="toggle-btn">Don't have an account? Register here</a>
     </div>
@@ -80,28 +89,41 @@
     </div>
 
     <script>
-        document.getElementById('loginForm').addEventListener('submit', async (event) => {
-            event.preventDefault();
-            
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
-            const message = document.getElementById('loginMessage');
-            
+        document.getElementById("loginForm").addEventListener("submit", async (event) => {
+            event.preventDefault(); // Prevent default form submission
+
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+            const message = document.getElementById("message");
+
             try {
                 const response = await fetch('/login', {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
                     body: JSON.stringify({ email, password })
                 });
 
-                const result = await response.json();
-                if (result.status === 'success') {
-                    window.location.href = '/profile.html'; 
+                const data = await response.json();
+
+                if (data.status === "success") {
+                    // Store the JWT token and redirect to profile
+                    localStorage.setItem('token', data.token);
+                    message.style.color = "green";
+                    message.innerText = "Login successful! Redirecting...";
+                    setTimeout(() => {
+                        window.location.href = "/profile.html";
+                    }, 2000); // Redirect after 2 seconds
                 } else {
-                    message.textContent = result.message;
+                    // Show error message if login failed
+                    message.innerText = data.message;
+                    message.style.color = "red";
                 }
             } catch (err) {
-                message.textContent = 'An error occurred. Please try again.';
+                console.error('Error during login:', err);
+                message.innerText = "An error occurred. Please try again later.";
+                message.style.color = "red";
             }
         });
     </script>
