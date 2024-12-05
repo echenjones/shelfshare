@@ -9,6 +9,36 @@
         <link rel="icon" type="image/x-icon" href="icon.png">
         <link rel="stylesheet" href="style.css"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <style type="text/css">
+            .content {
+                border: 2px solid #4C4C4C;
+                border-radius: 5px;
+                margin: 20px 20% 10px 20%;
+                padding: 30px;
+                background-color: rgba(255, 255, 255, 0.3);
+                font-size: 16px;
+                line-height: 1.6;
+            }
+            .content a, .content li {
+                color: #6E6E6E;
+                text-decoration: none;
+            }
+            .content a:hover {
+                color: #4C4C4C;
+            }
+
+            h1 {
+                padding-top: 50px;
+                padding-bottom: 20px;
+                text-align: center;
+            }
+            
+            @media (max-width: 600px) {
+                .content {
+                    margin: 20px 50px 20px 50px;
+                }
+            }
+        </style>
 
         <!-- Header -->
         <script src="header.js"></script>
@@ -17,19 +47,21 @@
     <body>
         <img style="margin: 0px" src="contact.jpg" alt="Contact Us" width="100%">
 
-        <div style="max-width: 900px; margin: 0 auto; padding: 20px; box-sizing: border-box;">
-            <h1>Contact Us</h1>
+        <h1>Contact Us</h1>
+
+        <div class="content">
             <p>
                 We’d love to hear from you! If you have any questions, suggestions, or need assistance, feel free to reach out to us using the information below.
             </p>
             <br>
-            <p><strong>Email:</strong> support@shelfshare.com</p>
-            <p><strong>Phone:</strong> +1-800-SWAP-SPOT</p>
+            <p><strong>Email: </strong><a href="mailto:support@shelfshare.com">support@shelfshare.com</a></p>
+            <p><strong>Phone: </strong><a href="tel:18005557927">+1-800-555-SWAP</a></p>
             <p><strong>Team Members:</strong></p>
             <ul>
                 <li>Brooke Thompson - CEO</li>
                 <li>Nate Perry - Community Manager</li>
-                <li>Elana Jones - Technical Support Lead</li>
+                <li>Elana Chen-Jones - Technical Support Lead</li>
+                <li>Eamonn McGovern - </li>
             </ul>
             <br>
             <p>We’re here to ensure your experience with ShelfShare is as seamless and enjoyable as possible. Don’t hesitate to get in touch!</p>
