@@ -75,7 +75,7 @@
     </head>
 
     <body>
-        <h1>SwapSpots</h1>
+        <h1>SwapSpot Map</h1>
 
         <div class="content">
             <div class="content2">
@@ -283,7 +283,7 @@
                 var radius = document.getElementById("radius").value * 1609.34; 
                 //var nearbyLocations = [];
                 
-                document.getElementById("nearbyLoc").innerHTML = '<h2>Nearby Swap/Drop Locations:</h2>';
+                document.getElementById("nearbyLoc").innerHTML = '<h2>Nearby SwapSpots:</h2>';
                 //set markers outside area opaque
                 markers.forEach(function(marker) {
                     var distanceMeters = map.distance(locSelected, marker.getLatLng());
