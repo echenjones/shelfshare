@@ -54,7 +54,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 <br>
                 <a href="https://echenjones.github.io/shelfshare/profile.html">My Profile</a>
                 <br>
-                <a href="#">Log In</a>
+                <a href="https://echenjones.github.io/shelfshare/login.html">Log In</a>
                 <br>
                 <form action=""> <!-- Need to add action for search! -->
                     <input type="text" placeholder="Search books" name="search">
