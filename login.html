@@ -96,9 +96,9 @@
 
                 const result = await response.json();
                 if (result.status === 'success') {
-                    window.location.href = '/profile.html'; // Redirect to profile page
+                    window.location.href = '/profile.html'; 
                 } else {
-                    message.textContent = result.message; // Display error message
+                    message.textContent = result.message;
                 }
             } catch (err) {
                 message.textContent = 'An error occurred. Please try again.';
