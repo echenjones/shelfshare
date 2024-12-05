@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .form-container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .form-container h1 {
+            margin-bottom: 20px;
+        }
+        .form-container input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .form-container button {
+            width: 100%;
+            padding: 10px;
+            background-color: #3A7CA5;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .form-container button:hover {
+            background-color: #2A5A7F;
+        }
+        .form-container .toggle-btn {
+            margin-top: 10px;
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #8A9F88;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .form-container .toggle-btn:hover {
+            background-color: #6F8972;
+        }
+    </style>
+</head>
+<body>
+    <div class="top">
+        <!-- Include header with navigation -->
+        <script src="header.js"></script>
+    </div>
+
+    <div class="blank-space"></div>
+
+    <div class="form-container">
+        <h1>Login</h1>
+        <form id="loginForm">
+            <input type="email" id="email" name="email" required placeholder="Enter your email">
+            <input type="password" id="password" name="password" required placeholder="Enter your password">
+            <button type="submit">Login</button>
+            <p id="loginMessage" style="color: red; margin-top: 10px;"></p>
+        </form>
+        <a href="register.html" class="toggle-btn">Don't have an account? Register here</a>
+    </div>
+
+    <div class="footer">
+        <!-- Include footer -->
+        <script src="footer.js"></script>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', async (event) => {
+            event.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const message = document.getElementById('loginMessage');
+            
+            try {
+                const response = await fetch('/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email, password })
+                });
+
+                const result = await response.json();
+                if (result.status === 'success') {
+                    window.location.href = '/profile.html'; // Redirect to profile page
+                } else {
+                    message.textContent = result.message; // Display error message
+                }
+            } catch (err) {
+                message.textContent = 'An error occurred. Please try again.';
+            }
+        });
+    </script>
+</body>
+</html>
