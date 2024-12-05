@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function() {
                         <li><a href="https://echenjones.github.io/shelfshare/about.html">About</a></li>
                         <li><a href="https://echenjones.github.io/shelfshare/map.html">SwapSpots</a></li>
                         <li><a href="#">FAQ</a></li>
-                        <li><a href="#">Contact</a></li>
+                        <li><a href="https://echenjones.github.io/shelfshare/contact.html">Contact</a></li>
                     </ul>
                 </div>
                 <div class="hamburger"> <!-- Hamburger menu -->
@@ -48,9 +48,9 @@ document.addEventListener("DOMContentLoaded", function() {
                 <br>
                 <a href="#">FAQ</a>
                 <br>
-                <a href="#">Contact</a>
+                <a href="https://echenjones.github.io/shelfshare/contact.html">Contact</a>
                 <br>
-                <a href="#">Subscriptions</a>
+                <a href="https://echenjones.github.io/shelfshare/subscription.html">Subscriptions</a>
                 <br>
                 <a href="#">Log In</a>
                 <br>
