@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 <div class="navbar">
                     <ul>
                         <li><a href="https://echenjones.github.io/shelfshare/about.html">About</a></li>
-                        <li><a href="https://echenjones.github.io/shelfshare/map.html">Book Map</a></li>
+                        <li><a href="https://echenjones.github.io/shelfshare/map.html">SwapSpots</a></li>
                         <li><a href="#">FAQ</a></li>
                         <li><a href="#">Contact</a></li>
                     </ul>
@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", function() {
             <div class="menu" id="menu">
                 <a href="https://echenjones.github.io/shelfshare/about.html">About</a>
                 <br>
-                <a href="https://echenjones.github.io/shelfshare/map.html">Book Map</a>
+                <a href="https://echenjones.github.io/shelfshare/map.html">SwapSpots</a>
                 <br>
                 <a href="#">FAQ</a>
                 <br>
