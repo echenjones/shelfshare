@@ -9,7 +9,7 @@
 }
 .secondary-navigation {
     display: inline-grid;
-    grid-template-columns: 62.5% 35% 2.5%; /* space, menu, space*/
+    grid-template-columns: 60% 37.5% 2.5%; /* space, menu, space*/
     align-items: center;
     box-sizing: border-box;
     height: 50px;
