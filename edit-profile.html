@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Edit your ShelfShare profile.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ShelfShare | Edit Profile</title>
+    <link rel="icon" type="image/x-icon" href="icon.png">
+    <link rel="stylesheet" href="style.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- Header -->
+    <script src="header.js"></script>
+</head>
+<body>
+    <!-- Profile Image -->
+    <img style="margin: 20px auto; display: block; width: 30%; max-width: 300px; border-radius: 50%;" 
+         src="default-profile.jpg" alt="Profile Photo" id="profileImage">
+
+    <div style="max-width: 900px; margin: 0 auto; padding: 20px; box-sizing: border-box;">
+        <h1>Edit Your Profile</h1>
+        <form id="profileForm" action="profile.html" method="POST">
+            <!-- Profile Photo Upload -->
+            <label for="profilePhoto">Profile Photo:</label><br>
+            <input type="file" id="profilePhoto" name="profilePhoto" accept="image/*" onchange="updateProfileImage(this)">
+            <br><br>
+
+            <!-- Name -->
+            <label for="name">Name:</label><br>
+            <input type="text" id="name" name="name" placeholder="Enter your name" required>
+            <br><br>
+
+            <!-- Email -->
+            <label for="email">Email:</label><br>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+            <br><br>
+
+            <!-- Bio -->
+            <label for="bio">About You:</label><br>
+            <textarea id="bio" name="bio" rows="4" cols="50" placeholder="Tell us a little about yourself..."></textarea>
+            <br><br>
+
+            <!-- Favorite Genres -->
+            <label for="genres">Favorite Book Genres:</label><br>
+            <select id="genres" name="genres" multiple>
+                <option value="fiction">Fiction</option>
+                <option value="nonfiction">Non-fiction</option>
+                <option value="mystery">Mystery</option>
+                <option value="fantasy">Fantasy</option>
+                <option value="sciencefiction">Science Fiction</option>
+                <option value="romance">Romance</option>
+                <option value="thriller">Thriller</option>
+                <option value="biography">Biography</option>
+                <option value="history">History</option>
+            </select>
+            <br><br>
+
+            <!-- Favorite Books -->
+            <label for="favoriteBooks">Top 3 Favorite Books:</label><br>
+            <input type="text" id="favoriteBooks1" name="favoriteBooks" placeholder="Book 1">
+            <br><br>
+            <input type="text" id="favoriteBooks2" name="favoriteBooks" placeholder="Book 2">
+            <br><br>
+            <input type="text" id="favoriteBooks3" name="favoriteBooks" placeholder="Book 3">
+            <br><br>
+
+            <!-- Save Button -->
+            <button type="submit" style="display: block; margin: 20px auto; width: 150px; text-align: center; 
+            padding: 10px; background-color: #3A7CA5; color: white; text-decoration: none; border-radius: 5px;">
+                Save Profile
+            </button>
+        </form>
+    </div>
+
+    <!-- Footer -->
+    <script src="footer.js"></script>
+
+    <!-- JavaScript -->
+    <script>
+        // Function to update profile photo preview
+        function updateProfileImage(input) {
+            const file = input.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('profileImage').src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+    </script>
+</body>
+</html>

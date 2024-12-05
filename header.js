@@ -52,6 +52,8 @@ document.addEventListener("DOMContentLoaded", function() {
                 <br>
                 <a href="https://echenjones.github.io/shelfshare/subscription.html">Subscriptions</a>
                 <br>
+                <a href="https://echenjones.github.io/shelfshare/profile.html">My Profile</a>
+                <br>
                 <a href="#">Log In</a>
                 <br>
                 <form action=""> <!-- Need to add action for search! -->
