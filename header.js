@@ -13,8 +13,8 @@ document.addEventListener("DOMContentLoaded", function() {
                                 <button type="submit"><i class="fa fa-search"></i></button>
                             </form>
                         </li>
-                        <li><a href="#">Subscriptions</a></li>
-                        <li><strong><a href="#">Log In</a></strong></li>
+                        <li><a href="https://echenjones.github.io/shelfshare/subscription.html">Subscriptions</a></li>
+                        <li><strong><a href="https://echenjones.github.io/shelfshare/login.html">Log In</a></strong></li>
                     </ul>
                 </div>
                 <div style="min-width: 10px"></div>
@@ -52,11 +52,9 @@ document.addEventListener("DOMContentLoaded", function() {
                 <br>
                 <a href="https://echenjones.github.io/shelfshare/subscription.html">Subscriptions</a>
                 <br>
-                <a href="https://echenjones.github.io/shelfshare/profile.html">My Profile</a>
-                <br>
                 <a href="https://echenjones.github.io/shelfshare/login.html">Log In</a>
                 <br>
-                <form action=""> <!-- Need to add action for search! -->
+                <form action="https://echenjones.github.io/shelfshare/find.html" id="search"> <!-- May change page name -->
                     <input type="text" placeholder="Search books" name="search">
                     <button type="submit"><i class="fa fa-search"></i></button>
                 </form>
