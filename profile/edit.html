@@ -6,8 +6,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
         <title>ShelfShare | Edit Profile</title>
-        <link rel="icon" type="image/x-icon" href="../icon.png">
-        <link rel="stylesheet" href="../style.css"/>
+        <link rel="icon" type="image/x-icon" href="icon.png"> <!--<link rel="icon" type="image/x-icon" href="../icon.png">-->
+        <link rel="stylesheet" href="style.css"/> <!--<link rel="stylesheet" href="../style.css"/>-->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <style type="text/css">
             .content {
@@ -30,12 +30,34 @@
                 color: #4C4C4C;
                 font-size: 16px;
             }
-            .content input {
+            .content input, .content select {
                 border: 1px solid #4C4C4C;
                 border-radius: 5px;
                 padding: 1px 4px;
                 color: #4C4C4C;
                 font-size: 14px;
+            }
+            .content textarea {
+                box-sizing: border-box;
+                width: 100%;
+                height: 100%;
+                resize: none;
+                border: 1px solid #4C4C4C;
+                border-radius: 5px;
+                padding: 1px 4px;
+                color: #4C4C4C;
+                font-size: 14px;
+            }
+            .content2 {
+                box-sizing: border-box;
+                max-width: 900px;
+                border: 2px solid #4C4C4C;
+                border-radius: 5px;
+                margin: 20px auto;
+                padding: 30px;
+                background-color: rgba(255, 255, 255, 0.3);
+                font-size: 16px;
+                line-height: 1.6;
             }
             .save-btn {
                 display: block;
@@ -46,6 +68,7 @@
                 padding: 10px;
                 background-color: #3A7CA5;
                 color: #FFFFFF;
+                font-size: 18px;
                 text-align: center;
                 text-decoration: none;
             }
@@ -55,7 +78,7 @@
         </style>
     
         <!-- Header -->
-        <script src="../header.js"></script>
+        <script src="header.js"></script> <!--<script src="../header.js"></script>-->
     </head>
     
     <body>
@@ -63,21 +86,21 @@
             <!-- Profile Image -->
             <img src="default-profile.jpg" alt="Profile Photo" id="profileImage">
         
-            <div style="max-width: 900px; box-sizing: border-box;">
+            <div class="content2">
                 <h1>Edit Your Profile</h1>
                 <form id="profileForm" action="profile.html" method="POST">
                     <!-- Profile Photo Upload -->
-                    <label for="profilePhoto">Profile Photo:</label><br>
-                    <input type="file" id="profilePhoto" name="profilePhoto" accept="image/*" onchange="updateProfileImage(this)">
+                    <label for="profilePhoto">Profile Photo:</label>
+                    <input type="file" id="profilePhoto" name="profilePhoto" style="border:none;"accept="image/*" onchange="updateProfileImage(this)">
                     <br><br>
         
                     <!-- Name -->
-                    <label for="name">Name:</label><br>
+                    <label for="name">Name:</label>
                     <input type="text" id="name" name="name" placeholder="Enter your name" required>
                     <br><br>
         
                     <!-- Email -->
-                    <label for="email">Email:</label><br>
+                    <label for="email">Email:</label>
                     <input type="email" id="email" name="email" placeholder="Enter your email" required>
                     <br><br>
         
@@ -118,7 +141,7 @@
         
     
         <!-- Footer -->
-        <script src="../footer.js"></script>
+        <script src="footer.js"></script> <!--<script src="../footer.js"></script>-->
     
         <!-- JavaScript -->
         <script>
