@@ -2,27 +2,55 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <meta name="description" content="Explore ShelfShare's subscription plans to enhance your book-swapping experience.">
+        <meta name="description" content="Explore ShelfShare's subscription plans to enhance your reading experience.">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <title>ShelfShare | Subscription Plans</title>
         <link rel="icon" type="image/x-icon" href="icon.png">
         <link rel="stylesheet" href="style.css"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <style>
+            .content {
+                padding: 20px 20% 50px 20%;
+                text-align: justify;
+                line-height: 1.6;
+            }
+            .content img {
+                width: 60%;
+                max-width: 500px;
+                margin: 0px auto 40px auto;
+                border-radius: 10px;
+            }
+            
+            h1 {
+                padding-top: 50px;
+                padding-bottom: 20px;
+                text-align: center;
+            }
+            h3 {
+                text-align: center;
+            }
+
+            @media (max-width: 600px) {
+                .content {
+                    padding: 20px 50px 20px 50px;
+                }
+            }
+        </style>
 
         <!-- Header -->
         <script src="header.js"></script>
     </head>
 
     <body>
-        <!-- Subscription Image with smaller size -->
-        <img style="margin: 20px auto; display: block; width: 50%; max-width: 500px;" src="subscription.jpg" alt="Subscription Plans">
+        <h1>Subscription Plans</h1>
 
-        <div style="max-width: 900px; margin: 0 auto; padding: 20px; box-sizing: border-box;">
-            <h1>Subscription Plans</h1>
-            <p>
+        <div class="content">
+            <!-- Subscription Image with smaller size -->
+            <img style="display: block;" src="mailbox.jpg" alt="Subscription Plans">
+            <h3>
                 Choose the plan that best suits your reading habits and get access to exclusive benefits!
-            </p>
+            </h3>
             <br>
             <div>
                 <h2>Basic Plan</h2>
@@ -35,7 +63,7 @@
             <div>
                 <h2>Premium Plan</h2>
                 <p>
-                    Designed for avid readers. Swap up to three books simultaneously and enjoy priority access to popular titles.
+                    Designed for avid readers. Swap up to three books simultaneously, and enjoy priority access to popular titles.
                 </p>
                 <p><strong>Price:</strong> $12/month</p>
             </div>
@@ -43,14 +71,14 @@
             <div>
                 <h2>Family Plan</h2>
                 <p>
-                    Great for households. Access up to 10 book swaps at once and customize genres for each member of your family.
+                    Great for households. Swap up to ten book at once, and customize genres for each member of your family.
                 </p>
                 <p><strong>Price:</strong> $25/month</p>
             </div>
             <br>
-            <p>
+            <h3 style="color: #4C4C4C">
                 Join today and start discovering the joy of sharing and finding books with ShelfShare!
-            </p>
+            </h3>
         </div>
 
         <!-- Footer -->
