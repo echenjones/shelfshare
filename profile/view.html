@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="description" content="View your ShelfShare profile.">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>ShelfShare | Profile</title>
+        <link rel="icon" type="image/x-icon" href="icon.png">
+        <link rel="stylesheet" href="style.css"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <style type="text/css">
+            .content {
+                padding: 70px 20% 20px 20%;
+            }
+            .content img {
+                display: block;
+                margin: 20px auto;
+                width: 30%;
+                max-width: 300px;
+                border-radius: 50%;
+            }
+            .content h1 {
+                padding-top: 20px;
+                padding-bottom: 20px;
+                text-align: center;
+                line-height: 1.2;
+            }
+            .content li {
+                color: #6E6E6E;
+            }
+            .edit-btn {
+                display: block;
+                margin: 20px auto;
+                width: 150px;
+                border-radius: 5px;
+                padding: 10px;
+                background-color: #3A7CA5;
+                color: #FFFFFF;
+                text-align: center;
+                text-decoration: none;
+            }
+            .edit-btn:hover {
+                background-color: #2A5A7F;
+            }
+        </style>
+
+        <!-- Header -->
+        <script src="header.js"></script>
+    </head>
+
+    <body>
+        <div class="content">
+            <!-- Profile Image -->
+            <img src="default-profile.jpg" alt="Profile Photo" id="profileImage">
+    
+            <div style="max-width: 900px; box-sizing: border-box;">
+                <h1>Your Profile</h1>
+                <div id="profileDetails">
+                    <p><strong>Name:</strong></p>
+                    <p><strong>Email:</strong> </p>
+                    <p><strong>About You:</strong></p>
+                    <p><strong>Favorite Genres:</strong></p>
+                    <p><strong>Top 3 Favorite Books:</strong></p>
+                    <ul>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                </div>
+                <!-- Edit Profile Button -->
+                <a href="https://echenjones.github.io/shelfshare/profile/edit.html" class="edit-btn">Edit Profile</a>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <script src="footer.js"></script>
+    </body>
+</html>
