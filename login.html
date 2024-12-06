@@ -9,7 +9,7 @@
         <link rel="icon" type="image/x-icon" href="icon.png">
         <link rel="stylesheet" href="style.css"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> <!-- For hamburger and social media icons -->
-        <style>
+        <style type="text/css">
             .content {
                 padding: 70px 20% 20px 20%;
             }
@@ -120,12 +120,12 @@
                         message.style.color = "green";
                         message.innerText = "Login successful! Redirecting...";
                         setTimeout(() => {
-                            window.location.href = "/profile.html";
+                            window.location.href = "https://echenjones.github.io/shelfshare/profile/view.html";
                         }, 2000); // Redirect after 2 seconds
                     } else {
                         // Show error message if login failed
                         message.innerText = data.message;
-                        message.style.color = "red";
+                        message.style.color = "#B75F52";
                     }
                 } catch (err) {
                     console.error('Error during login:', err);
