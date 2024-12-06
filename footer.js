@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function() {
             <div class="footer-organizer">
                 <div style="flex-grow: 1">
                     <h2><a href="https://echenjones.github.io/shelfshare">ShelfShare</a></h2>
-                    <a class="contact" href='#'>Contact Us</a>
+                    <a class="contact" href="https://echenjones.github.io/shelfshare/contact.html">Contact Us</a>
                 </div>
                 
                 <!-- Social media icons - on a real version, they would link to the actual social media pages of the organization -->
