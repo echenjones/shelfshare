@@ -77,9 +77,20 @@
                 background-color: #2A5A7F;
             }
 
-            @media (max-width: 800px) {
+            input[type=checkbox] {
+                margin-right: 3px;
+            }
+            input[type=checkbox] + label {
+                color: #6E6E6E;
+            }
+            input[type=checkbox]:hover {
+                color: #4C4C4C;
+            }
+
+            @media (max-width: 1125px) {
                 .content img {
-                    width: 50%;
+                    width: 200px;
+                    height: 200px;
                 }
             }
             @media (max-width: 600px) {
@@ -124,7 +135,25 @@
         
                     <!-- Favorite Genres -->
                     <label for="genres">Favorite Book Genres:</label><br>
-                    <select id="genres" name="genres" multiple>
+                    <input type="checkbox" id="genre1" value="fiction" name="genres">
+                    <label for="genre1">Fiction</label><br>
+                    <input type="checkbox" id="genre2" value="nonfiction" name="genres">
+                    <label for="genre2">Non-fiction</label><br>
+                    <input type="checkbox" id="genre3" value="mystery" name="genres">
+                    <label for="genre3">Mystery</label><br>
+                    <input type="checkbox" id="genre4" value="fantasy" name="genres">
+                    <label for="genre4">Fantasy</label><br>
+                    <input type="checkbox" id="genre5" value="sciencefiction" name="genres">
+                    <label for="genre5">Science Fiction</label><br>
+                    <input type="checkbox" id="genre6" value="romance" name="genres">
+                    <label for="genre6">Romance</label><br>
+                    <input type="checkbox" id="genre7" value="thriller" name="genres">
+                    <label for="genre7">Thriller</label><br>
+                    <input type="checkbox" id="genre8" value="biography" name="genres">
+                    <label for="genre8">Biography</label><br>
+                    <input type="checkbox" id="genre9" value="history" name="genres">
+                    <label for="genre9">History</label><br>
+                    <!--<select id="genres" name="genres" multiple>
                         <option value="fiction">Fiction</option>
                         <option value="nonfiction">Non-fiction</option>
                         <option value="mystery">Mystery</option>
@@ -135,7 +164,8 @@
                         <option value="biography">Biography</option>
                         <option value="history">History</option>
                     </select>
-                    <br><br>
+                    <br>-->
+                    <br>
         
                     <!-- Favorite Books -->
                     <label for="favoriteBooks">Top 3 Favorite Books:</label><br>
@@ -152,7 +182,6 @@
             </div>
         </div>
         
-    
         <!-- Footer -->
         <script src="../footer.js"></script>
     
