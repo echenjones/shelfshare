@@ -60,6 +60,9 @@
                 font-size: 16px;
                 line-height: 1.6;
             }
+            .favoriteBooks, .locations select {
+                margin-bottom: 8px;
+            }
             .save-btn {
                 display: block;
                 margin: 20px auto;
@@ -77,13 +80,10 @@
                 background-color: #2A5A7F;
             }
 
-            input[type=checkbox] {
+            input[type="checkbox"] {
                 margin-right: 3px;
             }
-            input[type=checkbox] + label {
-                color: #6E6E6E;
-            }
-            input[type=checkbox]:hover {
+            input[type="checkbox"] + label {
                 color: #4C4C4C;
             }
 
@@ -114,45 +114,54 @@
                 <h1>Edit Your Profile</h1>
                 <form id="profileForm" action="profile.html" method="POST">
                     <!-- Profile Photo Upload -->
-                    <label for="profilePhoto">Profile Photo:</label>
+                    <label for="profilePhoto"><strong>Profile Photo:</strong></label>
                     <input type="file" id="profilePhoto" name="profilePhoto" style="border:none;"accept="image/*" onchange="updateProfileImage(this)">
                     <br><br>
         
                     <!-- Name -->
-                    <label for="name">Name:</label>
+                    <label for="name"><strong>Name:</strong></label>
                     <input type="text" id="name" name="name" placeholder="Enter your name" required>
                     <br><br>
         
                     <!-- Email -->
-                    <label for="email">Email:</label>
+                    <label for="email"><strong>Email:</strong></label>
                     <input type="email" id="email" name="email" placeholder="Enter your email" required>
                     <br><br>
         
                     <!-- Bio -->
-                    <label for="bio">About You:</label><br>
+                    <label for="bio"><strong>About You:</strong></label><br>
                     <textarea id="bio" name="bio" rows="4" cols="50" placeholder="Tell us a little about yourself..."></textarea>
                     <br><br>
         
                     <!-- Favorite Genres -->
-                    <label for="genres">Favorite Book Genres:</label><br>
+                    <label for="genres"><strong>Favorite Book Genres:</strong></label>
+                    <br>
                     <input type="checkbox" id="genre1" value="fiction" name="genres">
-                    <label for="genre1">Fiction</label><br>
+                    <label for="genre1">Fiction</label>
+                    <br>
                     <input type="checkbox" id="genre2" value="nonfiction" name="genres">
-                    <label for="genre2">Non-fiction</label><br>
+                    <label for="genre2">Non-fiction</label>
+                    <br>
                     <input type="checkbox" id="genre3" value="mystery" name="genres">
-                    <label for="genre3">Mystery</label><br>
+                    <label for="genre3">Mystery</label>
+                    <br>
                     <input type="checkbox" id="genre4" value="fantasy" name="genres">
-                    <label for="genre4">Fantasy</label><br>
+                    <label for="genre4">Fantasy</label>
+                    <br>
                     <input type="checkbox" id="genre5" value="sciencefiction" name="genres">
-                    <label for="genre5">Science Fiction</label><br>
+                    <label for="genre5">Science Fiction</label>
+                    <br>
                     <input type="checkbox" id="genre6" value="romance" name="genres">
-                    <label for="genre6">Romance</label><br>
+                    <label for="genre6">Romance</label>
+                    <br>
                     <input type="checkbox" id="genre7" value="thriller" name="genres">
-                    <label for="genre7">Thriller</label><br>
+                    <label for="genre7">Thriller</label>
+                    <br>
                     <input type="checkbox" id="genre8" value="biography" name="genres">
-                    <label for="genre8">Biography</label><br>
+                    <label for="genre8">Biography</label>
+                    <br>
                     <input type="checkbox" id="genre9" value="history" name="genres">
-                    <label for="genre9">History</label><br>
+                    <label for="genre9">History</label>
                     <!--<select id="genres" name="genres" multiple>
                         <option value="fiction">Fiction</option>
                         <option value="nonfiction">Non-fiction</option>
@@ -163,17 +172,37 @@
                         <option value="thriller">Thriller</option>
                         <option value="biography">Biography</option>
                         <option value="history">History</option>
-                    </select>
-                    <br>-->
-                    <br>
+                    </select>-->
+                    <br><br>
         
                     <!-- Favorite Books -->
-                    <label for="favoriteBooks">Top 3 Favorite Books:</label><br>
-                    <input type="text" id="favoriteBooks1" name="favoriteBooks" placeholder="Book 1">
+                    <label for="favoriteBooks"><strong>Top 3 Favorite Books:</strong></label><br>
+                    <input type="text" id="favoriteBooks1" class="favoriteBooks" name="favoriteBooks" placeholder="Book 1">
+                    <br>
+                    <input type="text" id="favoriteBooks2" class="favoriteBooks" name="favoriteBooks" placeholder="Book 2">
+                    <br>
+                    <input type="text" id="favoriteBooks3" class="favoriteBooks" name="favoriteBooks" placeholder="Book 3">
                     <br><br>
-                    <input type="text" id="favoriteBooks2" name="favoriteBooks" placeholder="Book 2">
-                    <br><br>
-                    <input type="text" id="favoriteBooks3" name="favoriteBooks" placeholder="Book 3">
+
+                    <label for="locations"><strong>Your Locations:</strong></label><br>
+                    <div class="locations">
+                        <!-- Number of selects depends on subscription tier - 2 for basic, 5 for premium, 12 for family -->
+                        <select id="location1" name="location1"> <!-- Select should be disabled if the location is currently being used in a swap-->
+                            <option value="">--Select a SwapSpot--</option>
+                            <option value="swapspot1">SwapSpot 1</option>
+                            <option value="swapspot2">SwapSpot 2</option>
+                            <option value="swapspot3">SwapSpot 3</option>
+                            <option value="swapspot4">SwapSpot 4</option>
+                        </select>
+                        <br>
+                        <select id="location2" name="location2"> <!-- Select should be disabled if the location is currently being used in a swap-->
+                            <option value="">--Select a SwapSpot--</option>
+                            <option value="swapspot1">SwapSpot 1</option>
+                            <option value="swapspot2">SwapSpot 2</option>
+                            <option value="swapspot3">SwapSpot 3</option>
+                            <option value="swapspot4">SwapSpot 4</option>
+                        </select>
+                    </div>
                     <br><br>
         
                     <!-- Save Button -->
