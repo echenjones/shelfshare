@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 <br>
                 <a href="https://echenjones.github.io/shelfshare/map.html">SwapSpots</a>
                 <br>
-                <a href="#">FAQ</a>
+                <a href="https://echenjones.github.io/shelfshare/faq.html">FAQ</a>
                 <br>
                 <a href="https://echenjones.github.io/shelfshare/contact.html">Contact</a>
                 <br>
