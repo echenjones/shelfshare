@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     <ul>
                         <li><a href="https://echenjones.github.io/shelfshare/about.html">About</a></li>
                         <li><a href="https://echenjones.github.io/shelfshare/map.html">SwapSpots</a></li>
-                        <li><a href="#">FAQ</a></li>
+                        <li><a href="https://echenjones.github.io/shelfshare/faq.html">FAQ</a></li>
                         <li><a href="https://echenjones.github.io/shelfshare/contact.html">Contact</a></li>
                     </ul>
                 </div>
