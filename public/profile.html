@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile | ShelfShare</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <script src="header.js"></script>
+    
+    <div class="content">
+        <div id="profileView">
+            <h2>Your Profile</h2>
+            <p><strong>Name:</strong> <span id="viewProfileName"></span></p>
+            <p><strong>Bio:</strong> <span id="viewProfileBio"></span></p>
+            <button onclick="showEditProfile()">Edit Profile</button>
+            <a href="about.html">Go to About Page</a>
+        </div>
+
+        <div id="profileEdit" style="display: none;">
+            <h2>Edit Profile</h2>
+            <input type="text" id="editProfileName" placeholder="Name">
+            <textarea id="editProfileBio" placeholder="Bio"></textarea>
+            <button onclick="updateProfile()">Save Profile</button>
+            <button onclick="showProfileView()">Cancel</button>
+        </div>
+    </div>
+
+    <script src="footer.js"></script>
+    <script>
+        const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+
+        document.addEventListener('DOMContentLoaded', () => {
+            if (!currentUser) {
+                window.location.href = 'index.html';
+            }
+            document.getElementById('viewProfileName').innerText = currentUser.name || 'No name set';
+            document.getElementById('viewProfileBio').innerText = currentUser.bio || 'No bio set';
+        });
+
+        function showEditProfile() {
+            document.getElementById('profileView').style.display = 'none';
+            document.getElementById('profileEdit').style.display = 'block';
+
+            document.getElementById('editProfileName').value = currentUser.name || '';
+            document.getElementById('editProfileBio').value = currentUser.bio || '';
+        }
+
+        async function updateProfile() {
+            const name = document.getElementById('editProfileName').value;
+            const bio = document.getElementById('editProfileBio').value;
+
+            const response = await fetch('/update-profile', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ username: currentUser.username, name, bio }),
+            });
+            if (response.ok) {
+                currentUser.name = name;
+                currentUser.bio = bio;
+                localStorage.setItem('currentUser', JSON.stringify(currentUser));
+                showProfileView();
+            } else {
+                alert('Failed to update profile');
+            }
+        }
+
+        function showProfileView() {
+            document.getElementById('profileEdit').style.display = 'none';
+            document.getElementById('profileView').style.display = 'block';
+
+            document.getElementById('viewProfileName').innerText = currentUser.name || 'No name set';
+            document.getElementById('viewProfileBio').innerText = currentUser.bio || 'No bio set';
+        }
+    </script>
+</body>
+</html>
