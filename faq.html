@@ -10,21 +10,42 @@
         <link rel="stylesheet" href="style.css"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <style type="text/css">
-            .content {
-                border: 2px solid #4C4C4C;
-                border-radius: 5px;
-                margin: 20px 20% 10px 20%;
-                padding: 30px;
-                background-color: rgba(255, 255, 255, 0.3);
-                font-size: 16px;
+            .faq-container {
+                max-width: 800px;
+                padding: 20px 20% 50px 20%;
+                text-align: justify;
                 line-height: 1.6;
             }
-            .content a, .content li {
-                color: #6E6E6E;
-                text-decoration: none;
+            .faq-item {
+                margin-bottom: 20px;
+                cursor: pointer;
             }
-            .content a:hover {
+            .faq-question {
+                font-size: 20px;
+                font-weight: bold;
                 color: #4C4C4C;
+                margin: 0;
+                transition: color 0.3s ease;
+            }
+            .faq-question:hover {
+                color: #3A7CA5;
+            }
+            .faq-answer {
+                display: none;
+                margin-top: 10px;
+                color: #6E6E6E;
+                font-size: 16px;
+                overflow: hidden;
+                transition: max-height 0.5s ease, opacity 0.5s ease;
+            }
+            .faq-answer.open {
+                display: block;
+                max-height: 200px; /* Adjust according to content length */
+                opacity: 1;
+            }
+            .faq-answer.closed {
+                max-height: 0;
+                opacity: 0;
             }
 
             h1 {
@@ -34,47 +55,12 @@
             }
             
             @media (max-width: 600px) {
-                .content {
-                    margin: 20px 50px 20px 50px;
+                .faq-container {
+                    padding: 20px 50px 20px 50px;
                 }
-            }
-            .faq-container {
-            max-width: 800px;
-            margin: auto;
-            }
-            .faq-item {
-            margin-bottom: 20px;
-            cursor: pointer;
-            }
-            .faq-question {
-            font-weight: bold;
-            color: #2c3e50;
-            margin: 0;
-            transition: color 0.3s ease;
-            }
-            .faq-question:hover {
-            color: #2980b9;
-            }
-            .faq-answer {
-            display: none;
-            margin-top: 10px;
-            color: #7f8c8d;
-            overflow: hidden;
-            transition: max-height 0.5s ease, opacity 0.5s ease;
-            }
-            .faq-answer.open {
-            display: block;
-            max-height: 200px; /* Adjust according to content length */
-            opacity: 1;
-            }
-            .faq-answer.closed {
-            max-height: 0;
-            opacity: 0;
             }
         </style>
 
-        <!-- Header -->
-        <script src="header.js"></script>
         <script>
             function toggleAnswer(id) {
               const answer = document.getElementById(id);
@@ -87,12 +73,13 @@
                 answer.classList.add('open');
               }
             }
-          </script>
+        </script>
+
+        <!-- Header -->
+        <script src="header.js"></script>
     </head>
 
     <body>
-        <!-- <img style="margin: 0px" src="phone.jpg" alt="FAQs" width="100%"> -->
-    
         <div class="faq-container">
             <h1>Frequently Asked Questions</h1>
             
@@ -121,7 +108,6 @@
                 <p class="faq-answer closed" id="faq5">You can set up alerts for specific titles, and Shelf Share will notify you when someone lists them.</p>
             </div>
             </div>
-       
 
         <!-- Footer -->
         <script src="footer.js"></script>
