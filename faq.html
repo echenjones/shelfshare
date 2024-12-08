@@ -1,92 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Shelf Share FAQ</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 20px;
-      line-height: 1.6;
-    }
-    .faq-container {
-      max-width: 800px;
-      margin: auto;
-    }
-    .faq-item {
-      margin-bottom: 20px;
-      cursor: pointer;
-    }
-    .faq-question {
-      font-weight: bold;
-      color: #2c3e50;
-      margin: 0;
-      transition: color 0.3s ease;
-    }
-    .faq-question:hover {
-      color: #2980b9;
-    }
-    .faq-answer {
-      display: none;
-      margin-top: 10px;
-      color: #7f8c8d;
-      overflow: hidden;
-      transition: max-height 0.5s ease, opacity 0.5s ease;
-    }
-    .faq-answer.open {
-      display: block;
-      max-height: 200px; /* Adjust according to content length */
-      opacity: 1;
-    }
-    .faq-answer.closed {
-      max-height: 0;
-      opacity: 0;
-    }
-  </style>
-  <script>
-    function toggleAnswer(id) {
-      const answer = document.getElementById(id);
+    <head>
+        <meta charset="UTF-8">
+        <meta name="description" content="Answers to some of our most frequently asked questions.">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-      if (answer.classList.contains('open')) {
-        answer.classList.remove('open');
-        answer.classList.add('closed');
-      } else {
-        answer.classList.remove('closed');
-        answer.classList.add('open');
-      }
-    }
-  </script>
-</head>
-<body>
-  <div class="faq-container">
-    <h1>Shelf Share - Frequently Asked Questions</h1>
-    
-    <div class="faq-item" onclick="toggleAnswer('faq1')">
-      <p class="faq-question">What is Shelf Share?</p>
-      <p class="faq-answer closed" id="faq1">Shelf Share is a platform for book enthusiasts to swap books with others in their community, promoting sustainability and shared knowledge.</p>
-    </div>
+        <title>ShelfShare | FAQs</title>
+        <link rel="icon" type="image/x-icon" href="icon.png">
+        <link rel="stylesheet" href="style.css"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <style type="text/css">
+            .content {
+                border: 2px solid #4C4C4C;
+                border-radius: 5px;
+                margin: 20px 20% 10px 20%;
+                padding: 30px;
+                background-color: rgba(255, 255, 255, 0.3);
+                font-size: 16px;
+                line-height: 1.6;
+            }
+            .content a, .content li {
+                color: #6E6E6E;
+                text-decoration: none;
+            }
+            .content a:hover {
+                color: #4C4C4C;
+            }
 
-    <div class="faq-item" onclick="toggleAnswer('faq2')">
-      <p class="faq-question">How does the swapping process work?</p>
-      <p class="faq-answer closed" id="faq2">You can list books you’d like to share and browse books from others. Once you find a match, arrange a swap through the platform!</p>
-    </div>
+            h1 {
+                padding-top: 50px;
+                padding-bottom: 20px;
+                text-align: center;
+            }
+            
+            @media (max-width: 600px) {
+                .content {
+                    margin: 20px 50px 20px 50px;
+                }
+            }
+        </style>
 
-    <div class="faq-item" onclick="toggleAnswer('faq3')">
-      <p class="faq-question">Is there a fee to join Shelf Share?</p>
-      <p class="faq-answer closed" id="faq3">No, joining Shelf Share is completely free. Some users may choose to negotiate shipping or delivery costs for swaps.</p>
-    </div>
+        <!-- Header -->
+        <script src="header.js"></script>
+        <script>
+            function toggleAnswer(id) {
+              const answer = document.getElementById(id);
+        
+              if (answer.classList.contains('open')) {
+                answer.classList.remove('open');
+                answer.classList.add('closed');
+              } else {
+                answer.classList.remove('closed');
+                answer.classList.add('open');
+              }
+            }
+          </script>
+    </head>
 
-    <div class="faq-item" onclick="toggleAnswer('faq4')">
-      <p class="faq-question">Can I swap books internationally?</p>
-      <p class="faq-answer closed" id="faq4">Yes, international swaps are possible. Be sure to consider shipping times and costs when coordinating with other users.</p>
-    </div>
+    <body>
+        <img style="margin: 0px" src="phone.jpg" alt="FAQs" width="100%">
 
-    <div class="faq-item" onclick="toggleAnswer('faq5')">
-      <p class="faq-question">What if I don’t find a book I’m looking for?</p>
-      <p class="faq-answer closed" id="faq5">You can set up alerts for specific titles, and Shelf Share will notify you when someone lists them.</p>
-    </div>
-  </div>
-</body>
+        <h1>Contact Us</h1>
+
+        <div class="content">
+            <div class="faq-container">
+                <h1>Frequently Asked Questions</h1>
+                
+                <div class="faq-item" onclick="toggleAnswer('faq1')">
+                  <p class="faq-question">What is Shelf Share?</p>
+                  <p class="faq-answer closed" id="faq1">Shelf Share is a platform for book enthusiasts to swap books with others in their community, promoting sustainability and shared knowledge.</p>
+                </div>
+            
+                <div class="faq-item" onclick="toggleAnswer('faq2')">
+                  <p class="faq-question">How does the swapping process work?</p>
+                  <p class="faq-answer closed" id="faq2">You can list books you'd like to share and browse books from others. Once you find a match, arrange a swap through the platform!</p>
+                </div>
+            
+                <div class="faq-item" onclick="toggleAnswer('faq3')">
+                  <p class="faq-question">Is there a fee to join Shelf Share?</p>
+                  <p class="faq-answer closed" id="faq3">No, joining Shelf Share is completely free. Some users may choose to negotiate shipping or delivery costs for swaps.</p>
+                </div>
+            
+                <div class="faq-item" onclick="toggleAnswer('faq4')">
+                  <p class="faq-question">Can I swap books internationally?</p>
+                  <p class="faq-answer closed" id="faq4">Yes, international swaps are possible. Be sure to consider shipping times and costs when coordinating with other users.</p>
+                </div>
+            
+                <div class="faq-item" onclick="toggleAnswer('faq5')">
+                  <p class="faq-question">What if I don't find a book I'm looking for?</p>
+                  <p class="faq-answer closed" id="faq5">You can set up alerts for specific titles, and Shelf Share will notify you when someone lists them.</p>
+                </div>
+              </div>
+        </div>
+
+        <!-- Footer -->
+        <script src="footer.js"></script>
+    </body>
 </html>
