@@ -10,12 +10,20 @@
     <link rel="stylesheet" href="style.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style type="text/css">
-
-.container {
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #f7f9fc;
+    }
+    .container {
       max-width: 800px;
       margin: auto;
     }
-
+    h1 {
+      color: #2c3e50;
+      margin-bottom: 10px;
+    }
     .bio-section, .books-section, .locations-section {
       background-color: #ffffff;
       margin-bottom: 20px;
@@ -39,17 +47,19 @@
       padding: 0;
     }
     .list li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       margin: 5px 0;
       padding: 10px;
       background-color: #ecf0f1;
       border-radius: 5px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
     }
     .list li .book-title {
       font-weight: bold;
       color: #2980b9;
+      flex-grow: 1;
+      text-align: left;
     }
     .hold-button {
       padding: 10px 15px;
