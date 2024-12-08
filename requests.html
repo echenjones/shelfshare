@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Swap Requests">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ShelfShare | Swap Requests</title>
+    <link rel="icon" type="image/x-icon" href="icon.png">
+    <link rel="stylesheet" href="style.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style type="text/css">
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+    }
+    .container {
+      max-width: 900px;
+      margin: auto;
+    }
+    h1 {
+      color: #2c3e50;
+      margin-bottom: 20px;
+    }
+    .requests-section {
+      background-color: #ffffff;
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    .section-title {
+      font-size: 18px;
+      color: #34495e;
+      margin-bottom: 10px;
+      border-bottom: 2px solid #2980b9;
+      padding-bottom: 5px;
+    }
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    li {
+      margin: 8px 0;
+      padding: 10px;
+      background-color: #ecf0f1;
+      border-radius: 5px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .request-info {
+      font-size: 16px;
+      color: #555;
+    }
+    .status {
+      font-weight: bold;
+      color: #2980b9;
+    }
+    .status.approved {
+      color: #27ae60;
+    }
+    .status.pending {
+      color: #f39c12;
+    }
+    .status.denied {
+      color: #e74c3c;
+    }
+  </style>
+    <script src="header.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h1>Book Swap Requests</h1>
+    
+    <!-- Sent Requests Section -->
+    <div class="requests-section">
+      <h2 class="section-title">Sent Swap Requests</h2>
+      <ul>
+        <li>
+          <div class="request-info">"The Great Gatsby" to Alice Smith</div>
+          <div class="status pending">Pending</div>
+        </li>
+        <li>
+          <div class="request-info">"1984" to Bob Jones</div>
+          <div class="status approved">Approved</div>
+        </li>
+        <li>
+          <div class="request-info">"Pride and Prejudice" to Charlie Brown</div>
+          <div class="status denied">Denied</div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Received Requests Section -->
+    <div class="requests-section">
+      <h2 class="section-title">Received Swap Requests</h2>
+      <ul>
+        <li>
+          <div class="request-info">"The Hobbit" from Emma Davis</div>
+          <div class="status pending">Pending</div>
+        </li>
+        <li>
+          <div class="request-info">"To Kill a Mockingbird" from Lucas Evans</div>
+          <div class="status approved">Approved</div>
+        </li>
+        <li>
+          <div class="request-info">"The Catcher in the Rye" from Olivia Martinez</div>
+          <div class="status denied">Denied</div>
+        </li>
+      </ul>
+    </div>
+    
+  </div>
+  <script src="footer.js"></script>
+</body>
+</html>
