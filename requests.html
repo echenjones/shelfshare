@@ -14,14 +14,17 @@
       font-family: Arial, sans-serif;
       margin: 0;
     }
+
     .container {
       max-width: 900px;
       margin: auto;
     }
+
     h1 {
       color: #2c3e50;
       margin-bottom: 20px;
     }
+
     .requests-section {
       background-color: #ffffff;
       padding: 15px;
@@ -29,6 +32,7 @@
       margin-bottom: 20px;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
+
     .section-title {
       font-size: 18px;
       color: #34495e;
@@ -36,33 +40,44 @@
       border-bottom: 2px solid #2980b9;
       padding-bottom: 5px;
     }
+
     ul {
       list-style-type: none;
       padding: 0;
     }
+
     li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       margin: 8px 0;
       padding: 10px;
       background-color: #ecf0f1;
       border-radius: 5px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
     }
+
     .request-info {
       font-size: 16px;
       color: #555;
+      text-align: left;
+      flex-grow: 1;
+      padding-right: 10px;
     }
+
     .status {
       font-weight: bold;
       color: #2980b9;
+      text-align: right;
     }
+
     .status.approved {
       color: #27ae60;
     }
+
     .status.pending {
       color: #f39c12;
     }
+
     .status.denied {
       color: #e74c3c;
     }
