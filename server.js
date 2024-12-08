@@ -101,7 +101,7 @@ app.post('/login', async (req, res) => {
 const upload = multer({ dest: 'uploads/' });
 
 // Update Profile Endpoint
-app.put('/profile', authenticate, upload.single('profileImage'), async (req, res) => {
+app.put('/profile/view', authenticate, upload.single('profileImage'), async (req, res) => {
     try {
         const userId = req.user.id;
 
@@ -127,7 +127,7 @@ app.put('/profile', authenticate, upload.single('profileImage'), async (req, res
 });
 
 // Fetch Profile Endpoint
-app.get('/profile', authenticate, async (req, res) => {
+app.get('/profile/view', authenticate, async (req, res) => {
     try {
         const userId = req.user.id;
         const user = await User.findById(userId).select('-password'); // Avoid sending the password
