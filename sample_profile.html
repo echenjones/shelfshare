@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style type="text/css">
 
-    .container {
+.container {
       max-width: 800px;
       margin: auto;
     }
@@ -51,8 +51,22 @@
       font-weight: bold;
       color: #2980b9;
     }
-    .list li .location-name {
-      color: #2c3e50;
+    .hold-button {
+      padding: 10px 15px;
+      font-size: 14px;
+      color: #fff;
+      background-color: #3498db;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .hold-button:disabled {
+      background-color: #bdc3c7;
+      cursor: not-allowed;
+    }
+    .hold-button:hover:not(:disabled) {
+      background-color: #2980b9;
     }
   </style>
   <!-- Header -->
@@ -70,14 +84,26 @@
     
     <!-- Books Section -->
     <div class="books-section">
-      <h2 class="section-title">Books Available for Swap</h2>
-      <ul class="list">
-        <li><span class="book-title">The Great Gatsby</span></li>
-        <li><span class="book-title">Pride and Prejudice</span></li>
-        <li><span class="book-title">1984</span></li>
-        <li><span class="book-title">To Kill a Mockingbird</span></li>
-      </ul>
-    </div>
+        <h2 class="section-title">Books Available for Swap</h2>
+        <ul class="list">
+          <li>
+            <span class="book-title">The Great Gatsby</span>
+            <button class="hold-button">Place Hold</button>
+          </li>
+          <li>
+            <span class="book-title">Pride and Prejudice</span>
+            <button class="hold-button">Place Hold</button>
+          </li>
+          <li>
+            <span class="book-title">1984</span>
+            <button class="hold-button">Place Hold</button>
+          </li>
+          <li>
+            <span class="book-title">To Kill a Mockingbird</span>
+            <button class="hold-button" disabled>Place Hold</button>
+          </li>
+        </ul>
+      </div>
     
     <!-- Locations Section -->
     <div class="locations-section">
