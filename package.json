@@ -8,9 +8,9 @@
     "dev": "nodemon server.js"
   },
   "repository": {
-  "type": "git",
-  "url": "git://github.com/echenjones/shelfshare.git"
-},
+    "type": "git",
+    "url": "git://github.com/echenjones/shelfshare.git"
+  },
   "dependencies": {
     "bcrypt": "^5.0.1",
     "cors": "^2.8.5",
@@ -29,4 +29,5 @@
   },
   "author": "Brooke Thompson",
   "license": "ISC"
+  "homepage": "https://github.com/echenjones/shelfshare#readme"
 }
