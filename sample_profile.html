@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Profile page">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ShelfShare | FAQs</title>
+    <link rel="icon" type="image/x-icon" href="icon.png">
+    <link rel="stylesheet" href="style.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style type="text/css">
+
+    .container {
+      max-width: 800px;
+      margin: auto;
+    }
+
+    .bio-section, .books-section, .locations-section {
+      background-color: #ffffff;
+      margin-bottom: 20px;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    .section-title {
+      font-size: 18px;
+      color: #34495e;
+      margin-bottom: 10px;
+      border-bottom: 2px solid #2980b9;
+      padding-bottom: 5px;
+    }
+    .bio-content {
+      font-size: 16px;
+      color: #7f8c8d;
+    }
+    .list {
+      list-style-type: none;
+      padding: 0;
+    }
+    .list li {
+      margin: 5px 0;
+      padding: 10px;
+      background-color: #ecf0f1;
+      border-radius: 5px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .list li .book-title {
+      font-weight: bold;
+      color: #2980b9;
+    }
+    .list li .location-name {
+      color: #2c3e50;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>User Profile: John Doe</h1>
+    
+    <!-- Bio Section -->
+    <div class="bio-section">
+      <h2 class="section-title">Bio</h2>
+      <p class="bio-content">Hi! I'm John, an avid book lover based in Boston. I enjoy swapping books with fellow readers and discovering new titles through Shelf Share. When I'm not reading, you can find me hiking or experimenting with new recipes.</p>
+    </div>
+    
+    <!-- Books Section -->
+    <div class="books-section">
+      <h2 class="section-title">Books Available for Swap</h2>
+      <ul class="list">
+        <li><span class="book-title">The Great Gatsby</span></li>
+        <li><span class="book-title">Pride and Prejudice</span></li>
+        <li><span class="book-title">1984</span></li>
+        <li><span class="book-title">To Kill a Mockingbird</span></li>
+      </ul>
+    </div>
+    
+    <!-- Locations Section -->
+    <div class="locations-section">
+      <h2 class="section-title">Swap Locations</h2>
+      <ul class="list">
+        <li><span class="location-name">Boston Public Library</span></li>
+        <li><span class="location-name">Harvard Square Coffee Shop</span></li>
+        <li><span class="location-name">Somerville Community Center</span></li>
+        <li><span class="location-name">MIT Book Cafe</span></li>
+      </ul>
+    </div>
+  </div>
+</body>
+</html>
