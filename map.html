@@ -296,7 +296,7 @@
                     var radius = document.getElementById("radius").value * 1609.34; 
                     //var nearbyLocations = [];
                     
-                    document.getElementById("nearbyLoc").innerHTML = '<h2>Nearby SwapSpots:</h2>';
+                   // document.getElementById("nearbyLoc").innerHTML = '<h2>Nearby SwapSpots:</h2>';
                     //set markers outside area opaque
                     markers.forEach(function(marker) {
                         var distanceMeters = map.distance(locSelected, marker.getLatLng());
@@ -329,7 +329,7 @@
 
             function getBook() {
                 var searchedBook = document.getElementById("searchBook").value.toLowerCase();
-                var radius = document.getElementById("radius").value;
+                var radius = document.getElementById("radius").value * 1609.34;
                 document.getElementById("searchedBooksHeader").innerHTML = '<h2>Searched Book:</h2>';
                 document.getElementById("searchedBooks").innerHTML = '';
 
@@ -337,8 +337,10 @@
 
                 if (locSelected) {
                     swapLocations.forEach(function(location) {
-                        var distanceTo = ( (map.distance(locSelected, L.latLng(location.lat, location.lng))) / 1609.34).toFixed(2);
-                        if (distanceTo <= radius) {
+                        const distanceMeters = map.distance(locSelected, L.latLng(location.lat, location.lng));
+                        const distanceTo = (distanceMeters / 1609.34).toFixed(2); // Convert meters to miles
+
+                        if (distanceMeters <= radius) {
                             location.books.forEach( function(book) {
                                 if (book.toLowerCase().includes(searchedBook)) {
                                     booksSearchedFor.push(
@@ -360,7 +362,7 @@
                                     {
                                         name: book,
                                         loc: location.name,
-                                        dist:  -1,
+                                        dist:  Infinity,
                                     }
                                 );
                             }
@@ -374,10 +376,11 @@
                 }
 
                 if (booksSearchedFor.length > 0) {
+                    
                     booksSearchedFor.forEach( function(foundB) {
                         if (!(document.getElementById("searchedBooks").innerHTML.includes(foundB.loc))) {
                             document.getElementById("searchedBooks").innerHTML += "<h3>" + foundB.loc + "</h3>";
-                            if (!(foundB.dist == -1)) {
+                            if (!(foundB.dist == Infinity)) {
                                 document.getElementById("searchedBooks").innerHTML += "<strong> Distance to Location: </strong>" + foundB.dist + " Miles <br>";
                             }
                         }
@@ -388,6 +391,7 @@
                     document.getElementById("searchedBooks").innerHTML += "<p>No books found matching the search.</p>";
                 }
             }
+
 
         </script>
 
