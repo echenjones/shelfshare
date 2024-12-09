@@ -96,6 +96,13 @@
 
             <div class="content2">
                 <div id="map"></div> <!-- Where Map Goes -->
+                <div>
+                    <label for="searchBook">Enter a book to search for:</label>
+                    <input type="text" id="searchBook" value="" oninput="getBook()">
+                    <button onclick="getBook()">Update Search</button>
+                    <div id="searchedBooksHeader"></div>
+                    <div id="searchedBooks"></div>
+                </div>
                 <div id="nearbyLoc"></div>
             </div>
         </div>
@@ -187,6 +194,7 @@
                 markers.push(marker);
             });
 
+
             //click new location of user
             map.on('click', function(e) 
             {
@@ -206,6 +214,7 @@
 
                 newLocation(locSelected);
                 findNearbyLocations();
+                getBook();
             } );
 
             function getLocation() {
@@ -238,6 +247,7 @@
 
                         newLocation(locSelected);
                         findNearbyLocations();
+                        getBook();
 
                     } else {
                         alert("Cannot find Address.");
@@ -279,23 +289,27 @@
                 //     return;
                 // }
                 
-                var radius = document.getElementById("radius").value * 1609.34; 
-                //var nearbyLocations = [];
-                
-                document.getElementById("nearbyLoc").innerHTML = '<h2>Nearby SwapSpots:</h2>';
-                //set markers outside area opaque
-                markers.forEach(function(marker) {
-                    var distanceMeters = map.distance(locSelected, marker.getLatLng());
-                    var distanceMiles = distanceMeters / 1609.34;  // Convert meters to miles
+                //let nearbyLocations = getNearbyLocations();
+
+                //nearbyLocations
+
+                    var radius = document.getElementById("radius").value * 1609.34; 
+                    //var nearbyLocations = [];
                     
-                    //if location in radius
-                    if (distanceMeters <= radius) {
-                        marker.setOpacity(1);
-                        document.getElementById("nearbyLoc").innerHTML += marker.getPopup().getContent() + '<strong>Distance to Location: </strong>' + distanceMiles.toFixed(2) + ' Miles';
-                    } else {
-                        marker.setOpacity(0.3);
-                    }
-                });
+                    document.getElementById("nearbyLoc").innerHTML = '<h2>Nearby SwapSpots:</h2>';
+                    //set markers outside area opaque
+                    markers.forEach(function(marker) {
+                        var distanceMeters = map.distance(locSelected, marker.getLatLng());
+                        var distanceMiles = distanceMeters / 1609.34;  // Convert meters to miles
+                        
+                        //if location in radius
+                        if (distanceMeters <= radius) {
+                            marker.setOpacity(1);
+                            //document.getElementById("nearbyLoc").innerHTML += marker.getPopup().getContent() + '<strong>Distance to Location: </strong>' + distanceMiles.toFixed(2) + ' Miles';
+                        } else {
+                            marker.setOpacity(0.3);
+                        }
+                    });
 
                 // var listElement = document.getElementById("nearbyLoc");
                 // listElement.innerHTML = '';
@@ -312,6 +326,69 @@
                 //     listElement.appendChild(li);
                 // }
             }
+
+            function getBook() {
+                var searchedBook = document.getElementById("searchBook").value.toLowerCase();
+                var radius = document.getElementById("radius").value;
+                document.getElementById("searchedBooksHeader").innerHTML = '<h2>Searched Book:</h2>';
+                document.getElementById("searchedBooks").innerHTML = '';
+
+                let booksSearchedFor = [];
+
+                if (locSelected) {
+                    swapLocations.forEach(function(location) {
+                        const distanceTo = ( (map.distance(locSelected, L.latLng(location.lat, location.lng))) / 1609.34).toFixed(2);
+                        if (distanceTo <= radius) {
+                            location.books.forEach( function(book) {
+                                if (book.toLowerCase().includes(searchedBook)) {
+                                    booksSearchedFor.push(
+                                        {
+                                            name: book,
+                                            loc: location.name,
+                                            dist:  distanceTo,
+                                        }
+                                    );
+                                }
+                            });
+                        }
+                    });
+                } else {
+                    swapLocations.forEach(function(location)  {
+                        location.books.forEach( function(book) {
+                            if (book.toLowerCase().includes(searchedBook)) {
+                                booksSearchedFor.push(
+                                    {
+                                        name: book,
+                                        loc: location.name,
+                                        dist:  -1,
+                                    }
+                                );
+                            }
+                        });
+                    });
+                }
+
+                //sort by distance
+                if (locSelected) {
+                    booksSearchedFor.sort((a, b) => a.dist - b.dist);
+                }
+
+                if (booksSearchedFor.length > 0) {
+                    booksSearchedFor.forEach( function(foundB) {
+                        if (!(document.getElementById("searchedBooks").innerHTML.includes(foundB.loc))) {
+                            document.getElementById("searchedBooks").innerHTML += "<h3>" + foundB.loc + "</h3>";
+                            if (!(foundB.dist == -1)) {
+                                document.getElementById("searchedBooks").innerHTML += "<strong> Distance to Location: </strong>" + foundB.dist + " Miles <br>";
+                            }
+                        }
+                        document.getElementById("searchedBooks").innerHTML += " - " + foundB.name + "<br>";
+                        
+                    });
+                } else {
+                    document.getElementById("searchedBooks").innerHTML += "<p>No books found matching the search.</p>";
+                }
+            }
+
         </script>
 
         <!-- Footer -->
