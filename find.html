@@ -4,29 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Search Results</title>
-    <link rel="icon" type="image/x-icon" href="icon.png">
-    <link rel="stylesheet" href="style.css"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="header.js"></script>
+    <link rel="stylesheet" href="styles.css"> <!-- Link your CSS file -->
 </head>
 <body>
+    <h1>Search Results</h1>
     <div id="search-results"></div>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            // Get the URL query string
             const params = new URLSearchParams(window.location.search);
-            // Get the 'search' parameter
             const searchQuery = params.get("search");
-            // Select the div to display the results
             const resultsDiv = document.getElementById("search-results");
-            // Display the search phrase if it exists
-            if (searchQuery) {
-                resultsDiv.textContent = `Showing results for "${searchQuery}"`;
-            } else {
+
+            if (!searchQuery) {
                 resultsDiv.textContent = "No search term provided.";
+                return;
             }
+
+            fetch(`/search?search=${encodeURIComponent(searchQuery)}`)
+                .then(response => response.json())
+                .then(results => {
+                    if (results.length === 0) {
+                        resultsDiv.textContent = `No results found for "${searchQuery}".`;
+                    } else {
+                        resultsDiv.innerHTML = `
+                            <p>Showing results for "${searchQuery}":</p>
+                            <ul>
+                                ${results.map(result => `<li>${result.title} - Owned by: ${result.owner}</li>`).join('')}
+                            </ul>
+                        `;
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching search results:', error);
+                    resultsDiv.textContent = 'An error occurred while fetching search results.';
+                });
         });
     </script>
-    <script src="footer.js"></script>
 </body>
 </html>
