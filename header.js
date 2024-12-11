@@ -54,7 +54,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 <br>
                 <a href="https://echenjones.github.io/shelfshare/login.html">Log In</a>
                 <br>
-                <a href="https://echenjones.github.io/shelfshare/profile.html">My Profile</a>
+                <a href="https://echenjones.github.io/shelfshare/my-profile.html">My Profile</a>
                 <br>
                 <form action="https://echenjones.github.io/shelfshare/find.html" id="search"> <!-- May change page name -->
                     <input type="text" placeholder="Search books" name="search">
