@@ -8,9 +8,9 @@ document.addEventListener("DOMContentLoaded", function() {
                 <div class="navbar">
                     <ul>
                         <li>
-                            <form id="searchForm">
-                                <input type="text" id="searchInput" placeholder="Search books" name="search">
-                                <button type="button" id="searchButton"><i class="fa fa-search"></i></button>
+                            <form action="https://echenjones.github.io/shelfshare/find.html" id="search"> <!-- May change page name -->
+                                <input type="text" placeholder="Search books" name="search">
+                                <button type="submit"><i class="fa fa-search"></i></button>
                             </form>
                         </li>
                         <li><a href="https://echenjones.github.io/shelfshare/subscription.html">Subscriptions</a></li>
@@ -52,7 +52,9 @@ document.addEventListener("DOMContentLoaded", function() {
                 <br>
                 <a href="https://echenjones.github.io/shelfshare/subscription.html">Subscriptions</a>
                 <br>
-                <a href="https://echenjones.github.io/shelfshare/login.html">Log In</a>
+                <a href="https://brookethomp.github.io/shelfshare-with-database/login.html">Log In</a>
+                <br>
+                <a href="https://brookethomp.github.io/shelfshare-with-database/profile.html">Log In</a>
                 <br>
                 <form action="https://echenjones.github.io/shelfshare/find.html" id="search"> <!-- May change page name -->
                     <input type="text" placeholder="Search books" name="search">
@@ -65,15 +67,6 @@ document.addEventListener("DOMContentLoaded", function() {
         <div class="blank-space"></div>
     `;
     document.body.insertBefore(header, document.body.firstChild);
-
-
-    // Add event listener for search
-    document.getElementById('searchButton').addEventListener('click', function() {
-        const searchTerm = document.getElementById('searchInput').value;
-        if (searchTerm.trim()) {
-            window.location.href = `/find.html?search=${encodeURIComponent(searchTerm)}`;
-        }
-    });
 });
 
 // Show or hide search bar, depending on page
