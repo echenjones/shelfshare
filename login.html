@@ -9,25 +9,38 @@
         <link rel="stylesheet" href="style.css"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> <!-- For hamburger and social media icons -->
         <style type="text/css">
-            body {
-                margin: 0;
-                padding: 0;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                min-height: 100vh;
-                font-family: "Avenir", Arial, sans-serif;
-                background-color: #F4E1C1; /* Soft tan background */
-            }
+            header {
+                width: 100%; /* Ensure the header spans the entire width */
+                background-color: #3A7CA5; /* Match your theme */
+                color: #FFFFFF;
+                padding: 0px 0px; /* Padding inside the header */
+                position: fixed; /* Keep it fixed at the top */
+                top: 0; /* Ensure it starts at the very top */
+                left: 0;
+                z-index: 1000; /* Keep it above all other content */
+                box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Optional for aesthetics */
+}
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column; /* Arrange children vertically */
+    min-height: 100vh; /* Ensure the body spans the full height */
+    font-family: "Avenir", Arial, sans-serif;
+    background-color: #F4E1C1; /* Soft tan background */
+}
 
-            .container {
-                display: flex;
-                flex-direction: column;
-                gap: 20px; /* Adds space between the two boxes */
-                align-items: center;
-                max-width: 500px;
-                width: 100%;
-            }
+.container {
+    margin-top: 300px; /* Adjust this value to match your header's height */
+    flex: 1; /* Allow the container to grow and take available space */
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Add space between login and register boxes */
+    align-items: center;
+    max-width: 500px;
+    width: 100%;
+}
+
 
             .content {
                 width: 100%;
@@ -73,6 +86,15 @@
                 font-size: 14px;
                 color: #6E6E6E;
             }
+            footer {
+    width: 100%;
+    background-color: #3A7CA5;
+    color: #FFFFFF;
+    text-align: center;
+    padding: 10px 0;
+    position: relative; /* Ensure it stays within the normal flow */
+}
+
 
             @media (max-width: 600px) {
                 .container {
