@@ -2,147 +2,136 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <meta name="description" content="ShelfShare is a community-based platform that allows local book lovers to easily exchange books with each other through a flexible subscription model, promoting affordable reading and sustainability.">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <title>ShelfShare | Log In</title>
+        <title>Login | ShelfShare</title>
         <link rel="icon" type="image/x-icon" href="icon.png">
         <link rel="stylesheet" href="style.css"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> <!-- For hamburger and social media icons -->
         <style type="text/css">
+            body {
+                margin: 0;
+                padding: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                min-height: 100vh;
+                font-family: "Avenir", Arial, sans-serif;
+                background-color: #F4E1C1; /* Soft tan background */
+            }
+
+            .container {
+                display: flex;
+                flex-direction: column;
+                gap: 20px; /* Adds space between the two boxes */
+                align-items: center;
+                max-width: 500px;
+                width: 100%;
+            }
+
             .content {
-                margin: 0 20%;
-                padding: 70px 0 20px 0;
-            }
-            .form-container {
-                max-width: 400px;
-                padding: 20px 20px 30px 20px;
-                background-color: #FFFFFF;
+                width: 100%;
+                padding: 30px;
+                background-color: #FFFFFF; /* White box for contrast */
                 border-radius: 10px;
-                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
                 text-align: center;
             }
-            .form-container h1 {
-                margin-bottom: 20px;
+
+            .content h3 {
+                font-size: 20px;
                 color: #3A7CA5;
-                text-align: center;
+                margin-bottom: 10px;
             }
-            .form-container input {
-                box-sizing: border-box;
+
+            .content input {
                 width: 100%;
                 padding: 10px;
                 margin: 10px 0;
-                border: 1px solid #4C4C4C;
+                border: 1px solid #CFCFCF;
                 border-radius: 5px;
                 font-size: 16px;
             }
-            .form-container button {
+
+            .content button {
                 width: 100%;
                 padding: 10px;
                 background-color: #3A7CA5;
-                color:  #FFFFFF;
+                color: #FFFFFF;
                 border: none;
                 border-radius: 5px;
                 font-size: 18px;
                 cursor: pointer;
-                transition: background-color 0.3s;
-            }
-            .form-container button:hover {
-                background-color: #2A5A7F;
-            }
-            .form-container .toggle-btn {
-                margin-top: 10px;
-                display: inline-block;
-                padding-top: 5px;
-                border-bottom: 1px solid #8A9F88;
-                border-radius: 0px;
-                color: #8A9F88;
-                text-decoration: none;
-            }
-            .form-container .toggle-btn:hover {
-                border-bottom: 1px solid #6F8972;
-                border-radius: 0px;
-                color: #6F8972;
+                transition: background-color 0.3s ease;
             }
 
-            #message {
-                margin-top: 10px;
+            .content button:hover {
+                background-color: #2A5A7F;
+            }
+
+            p {
                 font-size: 14px;
+                color: #6E6E6E;
             }
-            #loginForm {
-                margin: 0px 20px;
-                padding: 0px 20px;
-            }
-            
+
             @media (max-width: 600px) {
-                .content {
-                    margin: 0 50px;
-                }
-                .form-container .toggle-btn {
-                    font-size: 12px;
+                .container {
+                    width: 90%;
                 }
             }
         </style>
-
-        <!-- Header -->
-        <script src="header.js"></script>
     </head>
 
-    <body>
+<body>
+    <div class="container">
+        <!-- Login Box -->
         <div class="content">
-            <div class="form-container">
-                <h1>Log In</h1>
-                <div id="message"></div>
-                <form id="loginForm">
-                    <input type="email" id="email" required placeholder="Enter your email">
-                    <input type="password" id="password" required placeholder="Enter your password">
-                    <button type="submit">Log In</button>
-                </form>
-                <a href="https://echenjones.github.io/shelfshare/register.html" class="toggle-btn">Don't have an account? Register here.</a>
-            </div>
+            <h3>Login</h3>
+            <input type="text" id="loginUsername" placeholder="Username">
+            <input type="password" id="loginPassword" placeholder="Password">
+            <button onclick="login()">Login</button>
         </div>
 
-        <!-- Footer -->
-        <script src="footer.js"></script>
+        <!-- Register Box -->
+        <div class="content">
+            <h3>Register</h3>
+            <input type="text" id="regUsername" placeholder="Username">
+            <input type="password" id="regPassword" placeholder="Password">
+            <button onclick="register()">Register</button>
+        </div>
+    </div>
 
-        <script>
-            document.getElementById("loginForm").addEventListener("submit", async (event) => {
-                event.preventDefault(); // Prevent default form submission
+    <script>
+        async function register() {
+            const username = document.getElementById('regUsername').value;
+            const password = document.getElementById('regPassword').value;
 
-                const email = document.getElementById("email").value;
-                const password = document.getElementById("password").value;
-                const message = document.getElementById("message");
-
-                try {
-                    const response = await fetch('/login', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify({ email, password })
-                    });
-
-                    const data = await response.json();
-
-                    if (data.status === "success") {
-                        // Store the JWT token and redirect to profile
-                        localStorage.setItem('token', data.token);
-                        message.style.color = "green";
-                        message.innerText = "Login successful! Redirecting...";
-                        setTimeout(() => {
-                            window.location.href = "https://echenjones.github.io/shelfshare/profile/view.html";
-                        }, 2000); // Redirect after 2 seconds
-                    } else {
-                        // Show error message if login failed
-                        message.innerText = data.message;
-                        message.style.color = "#B75F52";
-                    }
-                } catch (err) {
-                    console.error('Error during login:', err);
-                    message.innerText = "An error occurred. Please try again later.";
-                    message.style.color = "#B75F52";
-                }
+            const response = await fetch('/register', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ username, password }),
             });
-        </script>
-    </body>
+            alert(await response.text());
+        }
+
+        async function login() {
+            const username = document.getElementById('loginUsername').value;
+            const password = document.getElementById('loginPassword').value;
+
+            const response = await fetch('/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ username, password }),
+            });
+            const data = await response.json();
+
+            if (response.ok) {
+                localStorage.setItem('currentUser', JSON.stringify(data.user));
+                window.location.href = 'profile.html';
+            } else {
+                alert(data.message || 'Login failed');
+            }
+        }
+    </script>
+</body>
 </html>
