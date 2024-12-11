@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 <div class="navbar">
                     <ul>
                         <li>
-                            <form action="https://echenjones.github.io/shelfshare/find.html" id="search"> <!-- May change page name -->
+                            <form action="https://shelfshare1-fc7cf721ef64.herokuapp.com/find.html" id="search"> <!-- May change page name -->
                                 <input type="text" placeholder="Search books" name="search">
                                 <button type="submit"><i class="fa fa-search"></i></button>
                             </form>
@@ -56,7 +56,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 <br>
                 <a href="https://echenjones.github.io/shelfshare/my-profile.html">My Profile</a>
                 <br>
-                <form action="https://echenjones.github.io/shelfshare/find.html" id="search"> <!-- May change page name -->
+                <form action="https://shelfshare1-fc7cf721ef64.herokuapp.com/find.html" id="search"> <!-- May change page name -->
                     <input type="text" placeholder="Search books" name="search">
                     <button type="submit"><i class="fa fa-search"></i></button>
                 </form>
