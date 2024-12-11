@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function() {
                             </form>
                         </li>
                         <li><a href="https://echenjones.github.io/shelfshare/subscription.html">Subscriptions</a></li>
-                        <li><strong><a href="https://echenjones.github.io/shelfshare/login.html">Log In</a></strong></li>
+                        <li><strong><a href="https://shelfshare1-fc7cf721ef64.herokuapp.com/">Log In</a></strong></li>
                     </ul>
                 </div>
                 <div style="min-width: 10px"></div>
@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 <br>
                 <a href="https://echenjones.github.io/shelfshare/subscription.html">Subscriptions</a>
                 <br>
-                <a href="https://echenjones.github.io/shelfshare/login.html">Log In</a>
+                <a href="https://shelfshare1-fc7cf721ef64.herokuapp.com/">Log In</a>
                 <br>
                 <a href="https://echenjones.github.io/shelfshare/my-profile.html">My Profile</a>
                 <br>
