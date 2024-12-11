@@ -6,8 +6,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <title>ShelfShare | Profile</title>
-        <link rel="icon" type="image/x-icon" href="icon.png"> <!--<link rel="icon" type="image/x-icon" href="../icon.png">-->
-        <link rel="stylesheet" href="style.css"/> <!--<link rel="stylesheet" href="../style.css"/>-->
+        <link rel="icon" type="image/x-icon" href="icon.png">
+        <link rel="stylesheet" href="style.css"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <style type="text/css">
             .content {
@@ -23,7 +23,6 @@
             }
             .edit-btn, .save-btn {
                 display: block;
-                margin: 20px auto;
                 width: 150px;
                 border: none;
                 border-radius: 5px;
@@ -37,7 +36,29 @@
             .edit-btn:hover, .save-btn:hover {
                 background-color: #2A5A7F;
             }
-            .favoriteBooks, .locations select {
+            .edit-btn {
+                margin: 20px auto;
+            }
+            .cancel-btn {
+                margin-top: 10px;
+                display: inline-block;
+                padding: 5px 1px 0px 1px;
+                border-top: none;
+                border-left: none;
+                border-right: none;
+                border-bottom: 1px solid #8A9F88;
+                border-radius: 0px;
+                background: none;
+                color: #8A9F88;
+                font-size: 16px;
+                text-decoration: none;
+            }
+            .cancel-btn:hover {
+                border-bottom: 1px solid #6F8972;
+                border-radius: 0px;
+                color: #6F8972;
+            }
+            .shelf, .locations select {
                 margin-bottom: 8px;
             }
             
@@ -98,6 +119,9 @@
                 }
             }
             @media (max-width: 600px) {
+                .cancel-btn {
+                    font-size: 12px;
+                }
                 #profileView, #profileEdit {
                     margin: 0 50px;
                     padding: 30px 0 12px 0;
@@ -106,7 +130,7 @@
         </style>
 
         <!-- Header -->
-        <script src="header.js"></script> <!--<script src="../header.js"></script>-->
+        <script src="header.js"></script>
     </head>
 
     <body>
@@ -117,15 +141,13 @@
             <div class="content">
                 <h1>Your Profile</h1>
                 <div id="profileDetails">
-                    <p><strong>Name:</strong></p>
+                    <p><strong>Name:</strong><span id="viewProfileName"></span></p>
                     <p><strong>Email:</strong> </p>
-                    <p><strong>About You:</strong></p>
+                    <p><strong>About You:</strong><span id="viewProfileBio"></span></p>
                     <p><strong>Favorite Genres:</strong></p>
-                    <p><strong>Top 3 Favorite Books:</strong></p>
+                    <p><strong>Your Shelf:</strong></p>
                     <ul>
-                        <li></li>
-                        <li></li>
-                        <li></li>
+                        <li><span id="viewProfileBooks"></span></li>
                     </ul>
                     <p><strong>Your Locations:</strong></p>
                     <ul>
@@ -144,106 +166,110 @@
         
             <div class="content">
                 <h1>Edit Your Profile</h1>
-                <form id="profileForm" action="https://echenjones.github.io/shelfshare/profile/view.html" method="POST">
-                    <!-- Profile Photo Upload -->
-                    <label for="profilePhoto"><strong>Profile Photo:</strong></label>
-                    <input type="file" id="profilePhoto" name="profilePhoto" style="border:none;"accept="image/*" onchange="updateProfileImage(this)">
-                    <br><br>
-        
-                    <!-- Name -->
-                    <label for="name"><strong>Name:</strong></label>
-                    <input type="text" id="name" name="name" placeholder="Enter your name" required>
-                    <br><br>
-        
-                    <!-- Email -->
-                    <label for="email"><strong>Email:</strong></label>
-                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
-                    <br><br>
-        
-                    <!-- Bio -->
-                    <label for="bio"><strong>About You:</strong></label><br>
-                    <textarea id="bio" name="bio" rows="4" cols="50" placeholder="Tell us a little about yourself..."></textarea>
-                    <br><br>
-        
-                    <!-- Favorite Genres -->
-                    <label for="genres"><strong>Favorite Book Genres:</strong></label>
-                    <br>
-                    <input type="checkbox" id="genre1" value="fiction" name="genres">
-                    <label for="genre1">Fiction</label>
-                    <br>
-                    <input type="checkbox" id="genre2" value="nonfiction" name="genres">
-                    <label for="genre2">Non-fiction</label>
-                    <br>
-                    <input type="checkbox" id="genre3" value="mystery" name="genres">
-                    <label for="genre3">Mystery</label>
-                    <br>
-                    <input type="checkbox" id="genre4" value="fantasy" name="genres">
-                    <label for="genre4">Fantasy</label>
-                    <br>
-                    <input type="checkbox" id="genre5" value="sciencefiction" name="genres">
-                    <label for="genre5">Science Fiction</label>
-                    <br>
-                    <input type="checkbox" id="genre6" value="romance" name="genres">
-                    <label for="genre6">Romance</label>
-                    <br>
-                    <input type="checkbox" id="genre7" value="thriller" name="genres">
-                    <label for="genre7">Thriller</label>
-                    <br>
-                    <input type="checkbox" id="genre8" value="biography" name="genres">
-                    <label for="genre8">Biography</label>
-                    <br>
-                    <input type="checkbox" id="genre9" value="history" name="genres">
-                    <label for="genre9">History</label>
-                    <br><br>
-        
-                    <!-- Favorite Books -->
-                    <label for="favoriteBooks"><strong>Top 3 Favorite Books:</strong></label><br>
-                    <input type="text" id="favoriteBooks1" class="favoriteBooks" name="favoriteBooks" placeholder="Book 1">
-                    <br>
-                    <input type="text" id="favoriteBooks2" class="favoriteBooks" name="favoriteBooks" placeholder="Book 2">
-                    <br>
-                    <input type="text" id="favoriteBooks3" class="favoriteBooks" name="favoriteBooks" placeholder="Book 3">
-                    <br><br>
 
-                    <label for="locations"><strong>Your Locations:</strong></label><br>
-                    <div class="locations">
-                        <!-- Number of selects depends on subscription tier - 2 for basic, 5 for premium, 12 for family -->
-                        <select id="location1" name="location1"> <!-- Select should be disabled if the location is currently being used in a swap-->
-                            <option value="">--Select a SwapSpot--</option>
-                            <option value="swapspot1">SwapSpot 1</option>
-                            <option value="swapspot2">SwapSpot 2</option>
-                            <option value="swapspot3">SwapSpot 3</option>
-                            <option value="swapspot4">SwapSpot 4</option>
-                        </select>
-                        <br>
-                        <select id="location2" name="location2"> <!-- Select should be disabled if the location is currently being used in a swap-->
-                            <option value="">--Select a SwapSpot--</option>
-                            <option value="swapspot1">SwapSpot 1</option>
-                            <option value="swapspot2">SwapSpot 2</option>
-                            <option value="swapspot3">SwapSpot 3</option>
-                            <option value="swapspot4">SwapSpot 4</option>
-                        </select>
-                    </div>
-                    <br><br>
-        
-                    <!-- Save Button -->
+                <!-- Profile Photo Upload -->
+                <label for="profilePhoto"><strong>Profile Photo:</strong></label>
+                <input type="file" id="profilePhoto" name="profilePhoto" style="border:none;"accept="image/*" onchange="updateProfileImage(this)">
+                <br><br>
+    
+                <!-- Name -->
+                <label for="name"><strong>Name:</strong></label>
+                <input type="text" id="editProfileName" placeholder="Enter your name" required>
+                <br><br>
+    
+                <!-- Email -->
+                <label for="email"><strong>Email:</strong></label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                <br><br>
+    
+                <!-- Bio -->
+                <label for="bio"><strong>About You:</strong></label><br>
+                <textarea id="editProfileBio" rows="4" cols="50" placeholder="Tell us a little about yourself..."></textarea>
+                <br><br>
+    
+                <!-- Favorite Genres -->
+                <label for="genres"><strong>Favorite Book Genres:</strong></label>
+                <br>
+                <input type="checkbox" id="genre1" value="fiction" name="genres">
+                <label for="genre1">Fiction</label>
+                <br>
+                <input type="checkbox" id="genre2" value="nonfiction" name="genres">
+                <label for="genre2">Non-fiction</label>
+                <br>
+                <input type="checkbox" id="genre3" value="mystery" name="genres">
+                <label for="genre3">Mystery</label>
+                <br>
+                <input type="checkbox" id="genre4" value="fantasy" name="genres">
+                <label for="genre4">Fantasy</label>
+                <br>
+                <input type="checkbox" id="genre5" value="sciencefiction" name="genres">
+                <label for="genre5">Science Fiction</label>
+                <br>
+                <input type="checkbox" id="genre6" value="romance" name="genres">
+                <label for="genre6">Romance</label>
+                <br>
+                <input type="checkbox" id="genre7" value="thriller" name="genres">
+                <label for="genre7">Thriller</label>
+                <br>
+                <input type="checkbox" id="genre8" value="biography" name="genres">
+                <label for="genre8">Biography</label>
+                <br>
+                <input type="checkbox" id="genre9" value="history" name="genres">
+                <label for="genre9">History</label>
+                <br><br>
+    
+                <!-- Shelf -->
+                <label for="shelf"><strong>Your Shelf:</strong></label><br>
+                <input type="text" id="editProfileBooks" class="shelf" name="shelf" placeholder="Book 1">
+                <!--<br>
+                <input type="text" id="shelf2" class="shelf" name="shelf" placeholder="Book 2">
+                <br>
+                <input type="text" id="shelf3" class="shelf" name="shelf" placeholder="Book 3">-->
+                <br><br>
+
+                <!-- Locations -->
+                <label for="locations"><strong>Your Locations:</strong></label><br>
+                <div class="locations">
+                    <!-- Number of selects depends on subscription tier - 2 for basic, 5 for premium, 12 for family -->
+                    <select id="location1" name="location1"> <!-- Select should be disabled if the location is currently being used in a swap-->
+                        <option value="">--Select a SwapSpot--</option>
+                        <option value="swapspot1">SwapSpot 1</option>
+                        <option value="swapspot2">SwapSpot 2</option>
+                        <option value="swapspot3">SwapSpot 3</option>
+                        <option value="swapspot4">SwapSpot 4</option>
+                    </select>
+                    <br>
+                    <select id="location2" name="location2"> <!-- Select should be disabled if the location is currently being used in a swap-->
+                        <option value="">--Select a SwapSpot--</option>
+                        <option value="swapspot1">SwapSpot 1</option>
+                        <option value="swapspot2">SwapSpot 2</option>
+                        <option value="swapspot3">SwapSpot 3</option>
+                        <option value="swapspot4">SwapSpot 4</option>
+                    </select>
+                </div>
+                <br><br>
+    
+                <!-- Save/Cancel Buttons -->
+                <div style="text-align: center">
                     <button onclick="updateProfile()" class="save-btn">Save Profile</button>
-                </form>
+                    <button onclick="showViewProfile()" class="cancel-btn">Cancel</button>
+                </div>
             </div>
         </div>
 
         <!-- Footer -->
-        <script src="footer.js"></script> <!--<script src="../footer.js"></script>-->
+        <script src="footer.js"></script>
 
         <script>
             const currentUser = JSON.parse(localStorage.getItem('currentUser'));
     
             document.addEventListener('DOMContentLoaded', () => {
                 if (!currentUser) {
-                    window.location.href = 'https://echenjones.github.io/shelfshare';
+                    window.location.href = 'https://echenjones.github.io/shelfshare/login.html';
                 }
                 document.getElementById('viewProfileName').innerText = currentUser.name || 'No name set';
                 document.getElementById('viewProfileBio').innerText = currentUser.bio || 'No bio set';
+                document.getElementById('viewProfileBio').innerText = currentUser.books || 'No books set';
             });
     
             function showEditProfile() {
@@ -257,15 +283,17 @@
             async function updateProfile() {
                 const name = document.getElementById('editProfileName').value;
                 const bio = document.getElementById('editProfileBio').value;
+                const book = document.getElementById('editProfileBooks').value;
     
                 const response = await fetch('/update-profile', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ username: currentUser.username, name, bio }),
+                    body: JSON.stringify({ username: currentUser.username, name, bio, books: book }),
                 });
                 if (response.ok) {
                     currentUser.name = name;
                     currentUser.bio = bio;
+                    currentUser.books = book;
                     localStorage.setItem('currentUser', JSON.stringify(currentUser));
                     showViewProfile();
                 } else {
@@ -279,6 +307,7 @@
     
                 document.getElementById('viewProfileName').innerText = currentUser.name || 'No name set';
                 document.getElementById('viewProfileBio').innerText = currentUser.bio || 'No bio set';
+                document.getElementById('viewProfileBooks').innerText = currentUser.books || 'No books set';
             }
 
             function updateProfileImage(input) {
