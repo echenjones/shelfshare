@@ -2,102 +2,295 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
+        <meta name="description" content="View your ShelfShare profile.">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <title>Profile | ShelfShare</title>
-        <link rel="icon" type="image/x-icon" href="icon.png">
-        <link rel="stylesheet" href="style.css"/>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> <!-- For hamburger and social media icons -->
+        <title>ShelfShare | Profile</title>
+        <link rel="icon" type="image/x-icon" href="icon.png"> <!--<link rel="icon" type="image/x-icon" href="../icon.png">-->
+        <link rel="stylesheet" href="style.css"/> <!--<link rel="stylesheet" href="../style.css"/>-->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <style type="text/css">
             .content {
-                padding: 20px 20% 50px 20%;
-                text-align: justify;
-                line-height: 2;
+                box-sizing: border-box;
+                max-width: 900px;
+                border: 2px solid #4C4C4C;
+                border-radius: 5px;
+                margin: 20px auto;
+                padding: 30px;
+                background-color: rgba(255, 255, 255, 0.3);
+                font-size: 16px;
+                line-height: 1.6;
             }
-            .content h1 {
+            .edit-btn, .save-btn {
+                display: block;
+                margin: 20px auto;
+                width: 150px;
+                border: none;
+                border-radius: 5px;
+                padding: 10px;
+                background-color: #3A7CA5;
+                color: #FFFFFF;
+                font-size: 18px;
+                text-align: center;
+                text-decoration: none;
+            }
+            .edit-btn:hover, .save-btn:hover {
+                background-color: #2A5A7F;
+            }
+            .favoriteBooks, .locations select {
+                margin-bottom: 8px;
+            }
+            
+            #profileView, #profileEdit {
+                margin: 0 20%;
+                padding: 50px 0 20px 0;
+            }
+            #profileView img, #profileEdit img {
+                display: block;
+                margin: 20px auto;
+                width: 30%;
+                max-width: 300px;
+                border-radius: 50%;
+            }
+            #profileView h1, #profileEdit h1 {
                 padding-top: 20px;
                 padding-bottom: 20px;
                 text-align: center;
                 line-height: 1.2;
             }
+            #profileView p, #profileView li {
+                color: #4C4C4C;
+            }
+            #profileEdit label {
+                color: #4C4C4C;
+                font-size: 16px;
+            }
+            #profileEdit input, #profileEdit select {
+                border: 1px solid #4C4C4C;
+                border-radius: 5px;
+                padding: 1px 4px;
+                color: #4C4C4C;
+                font-size: 14px;
+            }
+            #profileEdit textarea {
+                box-sizing: border-box;
+                width: 100%;
+                height: 100%;
+                resize: none;
+                border: 1px solid #4C4C4C;
+                border-radius: 5px;
+                padding: 1px 4px;
+                color: #4C4C4C;
+                font-size: 14px;
+            }
 
+            input[type="checkbox"] {
+                margin-right: 3px;
+            }
+            input[type="checkbox"] + label {
+                color: #4C4C4C;
+            }
+
+            @media (max-width: 1125px) {
+                #profileView img, #profileEdit img {
+                    width: 200px;
+                    height: 200px;
+                }
+            }
             @media (max-width: 600px) {
-                .content {
-                    padding: 20px 50px 20px 50px;
+                #profileView, #profileEdit {
+                    margin: 0 50px;
+                    padding: 30px 0 12px 0;
                 }
             }
         </style>
 
         <!-- Header -->
-        <script src="header.js"></script>
+        <script src="header.js"></script> <!--<script src="../header.js"></script>-->
     </head>
 
-<body>
-    <script src="header.js"></script>
-    
-    <div class="content">
+    <body>
         <div id="profileView">
-            <h2>Your Profile</h2>
-            <p><strong>Name:</strong> <span id="viewProfileName"></span></p>
-            <p><strong>Bio:</strong> <span id="viewProfileBio"></span></p>
-            <button onclick="showEditProfile()">Edit Profile</button>
+            <!-- Profile Image -->
+            <img src="default-profile.jpg" alt="Profile Photo" id="profileImage">
+    
+            <div class="content">
+                <h1>Your Profile</h1>
+                <div id="profileDetails">
+                    <p><strong>Name:</strong></p>
+                    <p><strong>Email:</strong> </p>
+                    <p><strong>About You:</strong></p>
+                    <p><strong>Favorite Genres:</strong></p>
+                    <p><strong>Top 3 Favorite Books:</strong></p>
+                    <ul>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                    <p><strong>Your Locations:</strong></p>
+                    <ul>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                </div>
+                <!-- Edit Profile Button -->
+                <button onclick="showEditProfile()" class="edit-btn">Edit Profile</button>
+            </div>
         </div>
 
-        <div id="profileEdit" style="display: none;">
-            <h2>Edit Profile</h2>
-            <input type="text" id="editProfileName" placeholder="Name">
-            <textarea id="editProfileBio" placeholder="Bio"></textarea>
-            <button onclick="updateProfile()">Save Profile</button>
-            <button onclick="showProfileView()">Cancel</button>
+        <div id="profileEdit" style="display: none">
+            <!-- Profile Image -->
+            <img src="default-profile.jpg" alt="Profile Photo" id="profileImage">
+        
+            <div class="content">
+                <h1>Edit Your Profile</h1>
+                <form id="profileForm" action="https://echenjones.github.io/shelfshare/profile/view.html" method="POST">
+                    <!-- Profile Photo Upload -->
+                    <label for="profilePhoto"><strong>Profile Photo:</strong></label>
+                    <input type="file" id="profilePhoto" name="profilePhoto" style="border:none;"accept="image/*" onchange="updateProfileImage(this)">
+                    <br><br>
+        
+                    <!-- Name -->
+                    <label for="name"><strong>Name:</strong></label>
+                    <input type="text" id="name" name="name" placeholder="Enter your name" required>
+                    <br><br>
+        
+                    <!-- Email -->
+                    <label for="email"><strong>Email:</strong></label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                    <br><br>
+        
+                    <!-- Bio -->
+                    <label for="bio"><strong>About You:</strong></label><br>
+                    <textarea id="bio" name="bio" rows="4" cols="50" placeholder="Tell us a little about yourself..."></textarea>
+                    <br><br>
+        
+                    <!-- Favorite Genres -->
+                    <label for="genres"><strong>Favorite Book Genres:</strong></label>
+                    <br>
+                    <input type="checkbox" id="genre1" value="fiction" name="genres">
+                    <label for="genre1">Fiction</label>
+                    <br>
+                    <input type="checkbox" id="genre2" value="nonfiction" name="genres">
+                    <label for="genre2">Non-fiction</label>
+                    <br>
+                    <input type="checkbox" id="genre3" value="mystery" name="genres">
+                    <label for="genre3">Mystery</label>
+                    <br>
+                    <input type="checkbox" id="genre4" value="fantasy" name="genres">
+                    <label for="genre4">Fantasy</label>
+                    <br>
+                    <input type="checkbox" id="genre5" value="sciencefiction" name="genres">
+                    <label for="genre5">Science Fiction</label>
+                    <br>
+                    <input type="checkbox" id="genre6" value="romance" name="genres">
+                    <label for="genre6">Romance</label>
+                    <br>
+                    <input type="checkbox" id="genre7" value="thriller" name="genres">
+                    <label for="genre7">Thriller</label>
+                    <br>
+                    <input type="checkbox" id="genre8" value="biography" name="genres">
+                    <label for="genre8">Biography</label>
+                    <br>
+                    <input type="checkbox" id="genre9" value="history" name="genres">
+                    <label for="genre9">History</label>
+                    <br><br>
+        
+                    <!-- Favorite Books -->
+                    <label for="favoriteBooks"><strong>Top 3 Favorite Books:</strong></label><br>
+                    <input type="text" id="favoriteBooks1" class="favoriteBooks" name="favoriteBooks" placeholder="Book 1">
+                    <br>
+                    <input type="text" id="favoriteBooks2" class="favoriteBooks" name="favoriteBooks" placeholder="Book 2">
+                    <br>
+                    <input type="text" id="favoriteBooks3" class="favoriteBooks" name="favoriteBooks" placeholder="Book 3">
+                    <br><br>
+
+                    <label for="locations"><strong>Your Locations:</strong></label><br>
+                    <div class="locations">
+                        <!-- Number of selects depends on subscription tier - 2 for basic, 5 for premium, 12 for family -->
+                        <select id="location1" name="location1"> <!-- Select should be disabled if the location is currently being used in a swap-->
+                            <option value="">--Select a SwapSpot--</option>
+                            <option value="swapspot1">SwapSpot 1</option>
+                            <option value="swapspot2">SwapSpot 2</option>
+                            <option value="swapspot3">SwapSpot 3</option>
+                            <option value="swapspot4">SwapSpot 4</option>
+                        </select>
+                        <br>
+                        <select id="location2" name="location2"> <!-- Select should be disabled if the location is currently being used in a swap-->
+                            <option value="">--Select a SwapSpot--</option>
+                            <option value="swapspot1">SwapSpot 1</option>
+                            <option value="swapspot2">SwapSpot 2</option>
+                            <option value="swapspot3">SwapSpot 3</option>
+                            <option value="swapspot4">SwapSpot 4</option>
+                        </select>
+                    </div>
+                    <br><br>
+        
+                    <!-- Save Button -->
+                    <button onclick="updateProfile()" class="save-btn">Save Profile</button>
+                </form>
+            </div>
         </div>
-    </div>
 
-    <script>
-        const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        <!-- Footer -->
+        <script src="footer.js"></script> <!--<script src="../footer.js"></script>-->
 
-        document.addEventListener('DOMContentLoaded', () => {
-            if (!currentUser) {
-                window.location.href = 'index.html';
-            }
-            document.getElementById('viewProfileName').innerText = currentUser.name || 'No name set';
-            document.getElementById('viewProfileBio').innerText = currentUser.bio || 'No bio set';
-        });
-
-        function showEditProfile() {
-            document.getElementById('profileView').style.display = 'none';
-            document.getElementById('profileEdit').style.display = 'block';
-
-            document.getElementById('editProfileName').value = currentUser.name || '';
-            document.getElementById('editProfileBio').value = currentUser.bio || '';
-        }
-
-        async function updateProfile() {
-            const name = document.getElementById('editProfileName').value;
-            const bio = document.getElementById('editProfileBio').value;
-
-            const response = await fetch('/update-profile', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ username: currentUser.username, name, bio }),
+        <script>
+            const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    
+            document.addEventListener('DOMContentLoaded', () => {
+                if (!currentUser) {
+                    window.location.href = 'https://echenjones.github.io/shelfshare';
+                }
+                document.getElementById('viewProfileName').innerText = currentUser.name || 'No name set';
+                document.getElementById('viewProfileBio').innerText = currentUser.bio || 'No bio set';
             });
-            if (response.ok) {
-                currentUser.name = name;
-                currentUser.bio = bio;
-                localStorage.setItem('currentUser', JSON.stringify(currentUser));
-                showProfileView();
-            } else {
-                alert('Failed to update profile');
+    
+            function showEditProfile() {
+                document.getElementById('profileView').style.display = 'none';
+                document.getElementById('profileEdit').style.display = 'block';
+    
+                document.getElementById('editProfileName').value = currentUser.name || '';
+                document.getElementById('editProfileBio').value = currentUser.bio || '';
             }
-        }
+    
+            async function updateProfile() {
+                const name = document.getElementById('editProfileName').value;
+                const bio = document.getElementById('editProfileBio').value;
+    
+                const response = await fetch('/update-profile', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ username: currentUser.username, name, bio }),
+                });
+                if (response.ok) {
+                    currentUser.name = name;
+                    currentUser.bio = bio;
+                    localStorage.setItem('currentUser', JSON.stringify(currentUser));
+                    showViewProfile();
+                } else {
+                    alert('Failed to update profile');
+                }
+            }
+    
+            function showViewProfile() {
+                document.getElementById('profileEdit').style.display = 'none';
+                document.getElementById('profileView').style.display = 'block';
+    
+                document.getElementById('viewProfileName').innerText = currentUser.name || 'No name set';
+                document.getElementById('viewProfileBio').innerText = currentUser.bio || 'No bio set';
+            }
 
-        function showProfileView() {
-            document.getElementById('profileEdit').style.display = 'none';
-            document.getElementById('profileView').style.display = 'block';
-
-            document.getElementById('viewProfileName').innerText = currentUser.name || 'No name set';
-            document.getElementById('viewProfileBio').innerText = currentUser.bio || 'No bio set';
-        }
-    </script>
-    <script src="footer.js"></script>
-</body>
+            function updateProfileImage(input) {
+                const file = input.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        document.getElementById('profileImage').src = e.target.result;
+                    };
+                    reader.readAsDataURL(file);
+                }
+            }
+        </script>
+    </body>
 </html>
